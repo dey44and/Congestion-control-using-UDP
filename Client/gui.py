@@ -1,8 +1,7 @@
 from PySide2.QtCore import (QCoreApplication, QMetaObject, QRect)
 from PySide2.QtGui import (QFont)
 from PySide2.QtWidgets import *
-from functions import *
-from client import *
+from Utilities import utility as util
 
 
 info = "Lista comenzi\n" \
@@ -45,7 +44,7 @@ class Ui_MainWindow(object):
 
     def setup_ui(self, main_window):
         if main_window.objectName():
-            main_window.setObjectName(u"MainWindow")
+            main_window.setObjectName(u"Client App")
 
         main_window.resize(587, 635)
         self.centralwidget = QWidget(main_window)
@@ -191,7 +190,7 @@ class Ui_MainWindow(object):
 
     # retranslateUi
     def retranslate_ui(self, main_window):
-        main_window.setWindowTitle(QCoreApplication.translate("MainWindow", "MainWindow", None))
+        main_window.setWindowTitle(QCoreApplication.translate("MainWindow", "Client App", None))
         self.connect_button.setText(QCoreApplication.translate("MainWindow", u"Connect", None))
         self.dest_ip_label.setText(QCoreApplication.translate("MainWindow", u"IP Dest:", None))
         self.port_source_label.setText(QCoreApplication.translate("MainWindow", u"Port Source:", None))
@@ -203,26 +202,25 @@ class Ui_MainWindow(object):
         self.send_request_title.setText(QCoreApplication.translate("MainWindow", u"3. Send request", None))
         self.command_line_label.setText(QCoreApplication.translate("MainWindow", u"Command line:", None))
         self.submit.setText(QCoreApplication.translate("MainWindow", u"Send request", None))
-        self.display_instr.setText(QCoreApplication.translate("MainWindow", u"Display all comands", None))
+        self.display_instr.setText(QCoreApplication.translate("MainWindow", u"Display all commands", None))
 
     def connect_to_server(self):
         self.textEdit.clear()
         if not self.connected_to_server:
             # Realizare validare parametri
             test_passed = True
-            if not is_valid_ip(self.input_ip.text()):
+            if not util.is_valid_ip(self.input_ip.text()):
                 test_passed = False
                 self.textEdit.append("Error: Invalid IP Address!\n")
-            if not is_valid_port(self.input_sport.text()):
+            if not util.is_valid_port(self.input_sport.text()):
                 test_passed = False
                 self.textEdit.append("Error: Invalid Source Port number!\n")
-            if not is_valid_port(self.input_dport.text()):
+            if not util.is_valid_port(self.input_dport.text()):
                 test_passed = False
                 self.textEdit.append("Error: Invalid Dest Port number!\n")
 
             if test_passed:
                 self.connected_to_server = True
-                start_socket(self.input_sport.text(), self.input_dport.text(), self.input_ip.text())
                 self.textEdit.append("Info: Interface connected to the server!\n")
 
         else:

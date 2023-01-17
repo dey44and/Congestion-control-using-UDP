@@ -1,9 +1,8 @@
 import os
 import socket
-import sys
 import select
 import threading
-import utility as util
+from Utilities import utility as util
 
 
 # noinspection PyBroadException
@@ -51,7 +50,7 @@ class Server(object):
             self.execution_thread = threading.Thread(target=self.receive_fct())
             self.execution_thread.start()
         except:
-            print("EROARE: Pornire server esuata!")
+            print("Error: Starting server gone wrong!")
             sys.exit(-1)
 
 
@@ -66,7 +65,12 @@ if __name__ == "__main__":
 
     # Obtinere argumente si initializare obiect de tip Server
     s_port, d_port, d_ip = util.get_arguments(sys.argv)
-    server: Server = Server(s_port, d_port, d_ip)
-
-    # Pornire server
-    server.start_server()
+    try:
+        if not util.is_valid_ip(d_ip) or not util.is_valid_port(s_port) or not util.is_valid_port(d_port):
+            raise Exception()
+        server: Server = Server(s_port, d_port, d_ip)
+        # Pornire server
+        server.start_server()
+    except:
+        print("Error: Starting server gone wrong!")
+        sys.exit(-1)
