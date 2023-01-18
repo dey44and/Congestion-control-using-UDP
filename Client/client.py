@@ -1,55 +1,75 @@
 import socket
-import sys
+from datetime import datetime
 import select
-import threading
-import os
-from Utilities import utility as util
+import time
+from Utilities.entity import Entity
+from Utilities import packets
+from Commander.commander import Commander
 
 
 # noinspection PyBroadException
-class Client(object):
-    def __init__(self, source_port, dest_port, ip):
-        # Initializare atribute pentru clasa Client
-        self.source_port: int = int(source_port)
-        self.dest_port: int = int(dest_port)
-        self.ip: str = ip
-        self.sock: socket = None
-        self.execution_thread: threading = None
+class Client(Entity):
+    def __init__(self, source_port: str, dest_port: str, ip: str, sleep_time, commander: Commander):
+        # Call super constructor
+        super().__init__()
+
+        # Initialize attributes
+        self.__source_port: int = int(source_port)
+        self.__dest_port: int = int(dest_port)
+        self.__ip: str = ip
+        self.__queue = []
+        self.__commander = commander
+
+        # Config UDP Socket
+        self.__sock: socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM, socket.IPPROTO_UDP)
+        self.__sleep_time = sleep_time
+
+        self.running = False
+        self.timeout_socket = 1
+
+    def run(self):
+        # Create UDP Socket
+        self.__sock.bind((self.__ip, self.__source_port))
         self.running = True
 
-    def receive_fct(self):
-        # Creare socket UDP
-        self.sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM, socket.IPPROTO_UDP)
-        self.sock.bind(('0.0.0.0', self.source_port))
+        # Append history to debug
+        with open("debug_client.txt", 'a') as f:
+            date = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+            f.write(f"\n{date}: Client ({self.__ip}, {self.__source_port}) is connecting to server.\n")
+            f.close()
 
-        # Bucla executie server
-        contor = 0
+        # Client execution
         while self.running:
-            # Apelam la functia sistem IO -select- pentru a verifca daca socket-ul are date in bufferul de receptie
-            # Stabilim un timeout de 1 secunda
-            r, _, _ = select.select([self.sock], [], [], 1)
-            if not r:
-                contor = contor + 1
-            else:
-                data, address = self.sock.recvfrom(1024)
-                instructions = str(data).split(" ")
-                result = "Files:\n"
-                if instructions[0] == "ls":
-                    for subdir, dirs, files in os.walk('./'):
-                        for file in files:
-                            result += file + "\n"
-                    self.sock.sendto(result.encode(), (self.ip, self.dest_port))
-                elif instructions[0] == "add":
-                    pass
-                elif instructions[0] == "rm":
-                    pass
-                # print("S-a receptionat ", str(data), " de la ", address)
-                # print("Contor= ", contor)
+            # We call select function to check the buffer for data using a timeout of one second
+            r, _, _ = select.select([self.__sock], [], [], 1)
+            # If client receive data, it will process it
+            if r:
+                # Get data from server
+                data, address = self.__sock.recvfrom(1024)
 
-    def start_server(self):
-        try:
-            self.execution_thread = threading.Thread(target=self.receive_fct())
-            self.execution_thread.start()
-        except:
-            print("Error: Starting server gone wrong!")
-            sys.exit(-1)
+                # Append history to debug
+                with open("debug_client.txt", 'a') as f:
+                    date = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+                    f.write(f"{date}: Receive UDP datagram from: {address}\n")
+                    f.close()
+
+                # Handle packet content
+                control = data[0]
+                if control == packets.CONTROL_RESPONSE:
+                    instruction = data[1]
+                    if instruction == packets.LIST_FILES:
+                        content = data[2:].decode('utf-8')
+                        self.__commander.append_text("text_area", content)
+
+            # Otherwise, he will send a packet from queue
+            else:
+                # Check if queue is not empty
+                if len(self.__queue) > 0:
+                    # Get first packet and send it to server
+                    packet = self.__queue.pop(0)
+                    self.__sock.sendto(packet, (self.__ip, self.__dest_port))
+
+            time.sleep(self.__sleep_time)
+
+    def add_packet(self, packet: bytes):
+        self.__queue.append(packet)

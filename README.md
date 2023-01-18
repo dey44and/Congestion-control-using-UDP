@@ -4,7 +4,8 @@ Congestia unei rețele este o stare care apare atunci când traficul este atât 
 Efectele acesteia sunt: întârzierile, pierderea pachetelor sau blocarea noilor conexiuni.
 Controlul congestiei este un mecanism prin care se evită apariția acesteia.
 
-| First Header | Second Header |
-|--------------|---------------|
-| Content Cell | Content Cell  |
-| Content Cell | Content Cell  |
+| Tipul controlului | Cod |
+|-------------------|-----|
+| CONNECTION        | 0   |
+| INSTRUCTION       | 1   |
+| RESPONSE          | 2   |

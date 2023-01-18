@@ -1,8 +1,13 @@
+import sys
+
 from PySide2.QtCore import (QCoreApplication, QMetaObject, QRect)
 from PySide2.QtGui import (QFont)
 from PySide2.QtWidgets import *
-from Utilities import utility as util
 
+from Utilities import utility as util
+from client import *
+from Builder.Builder import PacketBuilder
+from Utilities import packets
 
 info = "Lista comenzi\n" \
        "ls - Afisare fisiere\n" \
@@ -14,6 +19,7 @@ class Ui_MainWindow(object):
     def __init__(self):
         # Connecting controls to functions
         self.connected_to_server = False
+        self.client = None
 
         # Widgets
         self.centralwidget = None
@@ -220,14 +226,39 @@ class Ui_MainWindow(object):
                 self.textEdit.append("Error: Invalid Dest Port number!\n")
 
             if test_passed:
-                self.connected_to_server = True
-                self.textEdit.append("Info: Interface connected to the server!\n")
+                try:
+                    # Prepare commander
+                    commander: Commander = Commander()
+                    commander.add_object("text_area", self.textEdit)
 
+                    # Start client on different thread
+                    self.client = Client(self.input_sport.text(), self.input_dport.text(), self.input_ip.text(), 0.01,
+                                         commander)
+                    self.client.start()
+
+                    self.connected_to_server = True
+                    self.textEdit.append("Info: Interface connected to the server!\n")
+                except:
+                    self.textEdit.append("Error: Problems while establishing a connection to the server!\n")
+                    sys.exit(-1)
         else:
             self.textEdit.append("Warning: Interface already connected to server!")
 
     def send_request(self):
+        # Get command from text box
         command = self.command_line.text()
+
+        # Check command
+        arguments = command.split(" ")
+        if arguments[0] == "ls":
+            # Generate a list file packet
+            builder: PacketBuilder = PacketBuilder()
+            builder.set_control(packets.CONTROL_INSTR)
+            builder.set_command(packets.LIST_FILES)
+
+            # Get packet and send to client
+            packet = builder.generate_packet()
+            self.client.add_packet(packet)
 
     def display_instructions(self):
         self.textEdit.clear()
