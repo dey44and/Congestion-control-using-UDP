@@ -4,8 +4,24 @@ Congestia unei rețele este o stare care apare atunci când traficul este atât 
 Efectele acesteia sunt: întârzierile, pierderea pachetelor sau blocarea noilor conexiuni.
 Controlul congestiei este un mecanism prin care se evită apariția acesteia.
 
-| Tipul controlului | Cod |
-|-------------------|-----|
-| CONNECTION        | 0   |
-| INSTRUCTION       | 1   |
-| RESPONSE          | 2   |
+## Formatul pachetelor ce vor fi trimise
+
+Pentru început, orice pachet va fi format din 8 biți în care se va stoca tipul controlului dorit.
+
+| Tip control | Cod |
+|-------------|-----|
+| CONNECTION  | 0   |
+| INSTRUCTION | 1   |
+| RESPONSE    | 2   |
+
+Pe următorii 8 biți, se va salva tipul comenzii ce se dorește a fi executată sau care a fost executată, în cadrul pachetului de tip RESPONSE.
+
+| Nume comandă  | Cod |
+|---------------|-----|
+| LIST_FILES    | 0   |
+| CREATE_FILE   | 1   |
+| APPEND_FILE   | 2   |
+| REMOVE_FILE   | 3   |
+| MOVE_FILE     | 4   |
+| DOWNLOAD_FILE | 5   |
+| UPLOAD_FILE   | 6   |
