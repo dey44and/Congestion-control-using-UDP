@@ -2,14 +2,14 @@ import socket
 from datetime import datetime
 import select
 import time
-from Utilities.entity import Entity
-from Utilities import packets
-from Commander.commander import Commander
+
+from Entity.entity import Entity
+from Packets import packets
 
 
 # noinspection PyBroadException
 class Client(Entity):
-    def __init__(self, source_port: str, dest_port: str, ip: str, sleep_time, commander: Commander):
+    def __init__(self, source_port: str, dest_port: str, ip: str, sleep_time):
         # Call super constructor
         super().__init__()
 
@@ -18,7 +18,6 @@ class Client(Entity):
         self.__dest_port: int = int(dest_port)
         self.__ip: str = ip
         self.__queue = []
-        self.__commander = commander
 
         # Config UDP Socket
         self.__sock: socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM, socket.IPPROTO_UDP)
@@ -57,9 +56,10 @@ class Client(Entity):
                 control = data[0]
                 if control == packets.CONTROL_RESPONSE:
                     instruction = data[1]
-                    if instruction == packets.LIST_FILES:
+                    if instruction == packets.LIST_FILES or instruction == packets.CREATE_FILE \
+                            or instruction == packets.APPEND_FILE or instruction == packets.REMOVE_FILE:
                         content = data[2:].decode('utf-8')
-                        self.__commander.append_text("text_area", content)
+                        print(content)
 
             # Otherwise, he will send a packet from queue
             else:
@@ -68,6 +68,12 @@ class Client(Entity):
                     # Get first packet and send it to server
                     packet = self.__queue.pop(0)
                     self.__sock.sendto(packet, (self.__ip, self.__dest_port))
+
+                    # Append history to debug
+                    with open("debug_client.txt", 'a') as f:
+                        date = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+                        f.write(f"{date}: Send UDP datagram to: ({self.__ip}, {self.__dest_port})\n")
+                        f.close()
 
             time.sleep(self.__sleep_time)
 

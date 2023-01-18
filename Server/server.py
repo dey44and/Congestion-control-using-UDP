@@ -1,15 +1,14 @@
-import os
 import socket
 import sys
 import time
 from datetime import datetime
-
 import select
+from Commander.commands import *
+from Entity import utility as util
+from Entity.entity import Entity
+from Packets import packets
 
-from Builder.Builder import PacketBuilder
-from Utilities import utility as util
-from Utilities.entity import Entity
-from Utilities import packets
+path = "./Root/"
 
 
 # noinspection PyBroadException
@@ -32,6 +31,7 @@ class Server(Entity):
 
     def run(self):
         # Create UDP Socket
+        global packet
         try:
             self.__sock.bind((self.__ip, self.__source_port))
             self.running = True
@@ -61,20 +61,27 @@ class Server(Entity):
                     if control == packets.CONTROL_INSTR:
                         instruction = data[1]
 
+                        # List file instruction
                         if instruction == packets.LIST_FILES:
-                            result = "Files:\n"
-                            for subdir, dirs, files in os.walk('./Root'):
-                                for file in files:
-                                    result += "-> " + file + "\n"
+                            packet = list_files_packet(data)
+                        # Add file instruction
+                        elif instruction == packets.CREATE_FILE:
+                            packet = create_file_packet(data)
+                        # Append to file instruction
+                        elif instruction == packets.APPEND_FILE:
+                            packet = append_to_file_packet(data)
+                        # Remove file instruction
+                        elif instruction == packets.REMOVE_FILE:
+                            packet = remove_file_packet(data)
 
-                            # Generate a list file packet
-                            builder: PacketBuilder = PacketBuilder()
-                            builder.set_control(packets.CONTROL_RESPONSE)
-                            builder.set_command(packets.LIST_FILES)
+                        # Send packet to client
+                        self.__sock.sendto(packet, (self.__ip, self.__dest_port))
 
-                            # Get packet and send to client
-                            packet = builder.generate_packet() + result.encode('utf-8')
-                            self.__sock.sendto(packet, (self.__ip, self.__dest_port))
+                        # Append history to debug
+                        with open("debug_server.txt", 'a') as f:
+                            date = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+                            f.write(f"{date}: Send UDP datagram to: ({self.__ip}, {self.__dest_port})\n")
+                            f.close()
 
                 time.sleep(self.__sleep_time)
         except:

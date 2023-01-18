@@ -4,15 +4,15 @@ from PySide2.QtCore import (QCoreApplication, QMetaObject, QRect)
 from PySide2.QtGui import (QFont)
 from PySide2.QtWidgets import *
 
-from Utilities import utility as util
+from Entity import utility as util
+from Packets.packet_factory import PacketFactory
 from client import *
-from Builder.Builder import PacketBuilder
-from Utilities import packets
 
-info = "Lista comenzi\n" \
-       "ls - Afisare fisiere\n" \
-       "add [file_name] - Adauga fisier\n" \
-       "rm [file_name] - Sterge fisier\n"
+info = "List of commands\n" \
+       "ls - Show files\n" \
+       "add [file_name] - Add a file\n" \
+       "app [file_name] - Append to a file\n" \
+       "rm [file_name] - Remove a file\n"
 
 
 class Ui_MainWindow(object):
@@ -227,13 +227,8 @@ class Ui_MainWindow(object):
 
             if test_passed:
                 try:
-                    # Prepare commander
-                    commander: Commander = Commander()
-                    commander.add_object("text_area", self.textEdit)
-
                     # Start client on different thread
-                    self.client = Client(self.input_sport.text(), self.input_dport.text(), self.input_ip.text(), 0.01,
-                                         commander)
+                    self.client = Client(self.input_sport.text(), self.input_dport.text(), self.input_ip.text(), 0.01)
                     self.client.start()
 
                     self.connected_to_server = True
@@ -250,15 +245,17 @@ class Ui_MainWindow(object):
 
         # Check command
         arguments = command.split(" ")
-        if arguments[0] == "ls":
-            # Generate a list file packet
-            builder: PacketBuilder = PacketBuilder()
-            builder.set_control(packets.CONTROL_INSTR)
-            builder.set_command(packets.LIST_FILES)
 
-            # Get packet and send to client
-            packet = builder.generate_packet()
-            self.client.add_packet(packet)
+        # Add to arguments content if command is app
+        if arguments[0] == "app":
+            arguments.append(self.textEdit.toPlainText())
+
+        # Generate packet
+        packet_generator: PacketFactory = PacketFactory(arguments)
+        packet = packet_generator.get_packet()
+
+        # Send packet to client
+        self.client.add_packet(packet)
 
     def display_instructions(self):
         self.textEdit.clear()
