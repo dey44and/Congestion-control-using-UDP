@@ -32,7 +32,7 @@ class Client(Entity):
         self.running = True
 
         # Append history to debug
-        with open("debug_client.txt", 'a') as f:
+        with open("../DebugSection/debug_client.txt", 'a') as f:
             date = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
             f.write(f"\n{date}: Client ({self.__ip}, {self.__source_port}) is connecting to server.\n")
             f.close()
@@ -47,7 +47,7 @@ class Client(Entity):
                 data, address = self.__sock.recvfrom(1024)
 
                 # Append history to debug
-                with open("debug_client.txt", 'a') as f:
+                with open("../DebugSection/debug_client.txt", 'a') as f:
                     date = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
                     f.write(f"{date}: Receive UDP datagram from: {address}\n")
                     f.close()
@@ -70,7 +70,7 @@ class Client(Entity):
                     self.__sock.sendto(packet, (self.__ip, self.__dest_port))
 
                     # Append history to debug
-                    with open("debug_client.txt", 'a') as f:
+                    with open("../DebugSection/debug_client.txt", 'a') as f:
                         date = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
                         f.write(f"{date}: Send UDP datagram to: ({self.__ip}, {self.__dest_port})\n")
                         f.close()

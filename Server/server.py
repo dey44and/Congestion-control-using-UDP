@@ -37,7 +37,7 @@ class Server(Entity):
             self.running = True
 
             # Append history to debug
-            with open("debug_server.txt", 'a') as f:
+            with open("../DebugSection/debug_server.txt", 'a') as f:
                 date = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
                 f.write(f"\n{date}: Server is starting connection on ({self.__ip}, {self.__source_port})\n")
                 f.close()
@@ -51,7 +51,7 @@ class Server(Entity):
                     data, address = self.__sock.recvfrom(1024)
 
                     # Append history to debug
-                    with open("debug_server.txt", 'a') as f:
+                    with open("../DebugSection/debug_server.txt", 'a') as f:
                         date = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
                         f.write(f"{date}: Receive UDP datagram from: {address}\n")
                         f.close()
@@ -78,7 +78,7 @@ class Server(Entity):
                         self.__sock.sendto(packet, (self.__ip, self.__dest_port))
 
                         # Append history to debug
-                        with open("debug_server.txt", 'a') as f:
+                        with open("../DebugSection/debug_server.txt", 'a') as f:
                             date = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
                             f.write(f"{date}: Send UDP datagram to: ({self.__ip}, {self.__dest_port})\n")
                             f.close()
@@ -86,7 +86,7 @@ class Server(Entity):
                 time.sleep(self.__sleep_time)
         except:
             # Append history to debug
-            with open("debug_server.txt", 'a') as f:
+            with open("../DebugSection/debug_server.txt", 'a') as f:
                 date = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
                 f.write(f"\n{date}: Server is closing connection.\n")
                 f.close()
@@ -119,13 +119,13 @@ if __name__ == "__main__":
         server.join()
 
         # Append history to debug
-        with open("debug_server.txt", 'a') as f:
+        with open("../DebugSection/debug_server.txt", 'a') as f:
             date = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
             f.write(f"\n{date}: Server is closing connection.\n")
             f.close()
     except:
         # Append history to debug
-        with open("debug_server.txt", 'a') as f:
+        with open("../DebugSection/debug_server.txt", 'a') as f:
             date = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
             f.write(f"\n{date}: Server is closing connection.\n")
             f.close()
