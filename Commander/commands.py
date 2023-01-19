@@ -3,7 +3,7 @@ import os
 from Builder.Builder import PacketBuilder
 from Packets import packets
 
-path = "./Root/"
+path = ".\\Root\\"
 
 
 def list_files_packet(data: bytes) -> bytes:
@@ -68,7 +68,8 @@ def remove_file_packet(data: bytes) -> bytes:
     # Try to remove the file
     try:
         file_name = data[2:].decode('utf-8')
-        os.remove(path + file_name)
+        current_path = os.getcwd()
+        os.remove(current_path + path[1:] + file_name)
         packet += "INFO: The file was removed.".encode('utf-8')
     except:
         packet += "WARNING: The file was already removed.".encode('utf-8')

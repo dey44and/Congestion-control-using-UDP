@@ -23,13 +23,13 @@ class Client(Entity):
         self.__sock: socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM, socket.IPPROTO_UDP)
         self.__sleep_time = sleep_time
 
-        self.running = False
-        self.timeout_socket = 1
+        self.__running = False
+        self.__timeout_socket = 1
 
     def run(self):
         # Create UDP Socket
         self.__sock.bind((self.__ip, self.__source_port))
-        self.running = True
+        self.__running = True
 
         # Append history to debug
         with open("../DebugSection/debug_client.txt", 'a') as f:
@@ -38,7 +38,7 @@ class Client(Entity):
             f.close()
 
         # Client execution
-        while self.running:
+        while self.__running:
             # We call select function to check the buffer for data using a timeout of one second
             r, _, _ = select.select([self.__sock], [], [], 1)
             # If client receive data, it will process it
@@ -49,7 +49,7 @@ class Client(Entity):
                 # Append history to debug
                 with open("../DebugSection/debug_client.txt", 'a') as f:
                     date = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-                    f.write(f"{date}: Receive UDP datagram from: {address}\n")
+                    f.write(f"{date}: Receive UDP datagram from: {address}.\n")
                     f.close()
 
                 # Handle packet content
@@ -69,10 +69,21 @@ class Client(Entity):
                     packet = self.__queue.pop(0)
                     self.__sock.sendto(packet, (self.__ip, self.__dest_port))
 
+                    # Check for leave packet
+                    if packet[0] == packets.CONTROL_CONN and packet[1] == packets.CONN_LEAVE:
+                        self.__running = False
+                        # Append history to debug
+                        with open("../DebugSection/debug_client.txt", 'a') as f:
+                            date = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+                            f.write(f"{date}: Send UDP datagram to: ({self.__ip}, {self.__dest_port}).\n")
+                            f.write(f"{date}: Client ({self.__ip}, {self.__source_port}) disconnected from server.")
+                            f.close()
+                        break
+
                     # Append history to debug
                     with open("../DebugSection/debug_client.txt", 'a') as f:
                         date = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-                        f.write(f"{date}: Send UDP datagram to: ({self.__ip}, {self.__dest_port})\n")
+                        f.write(f"{date}: Send UDP datagram to: ({self.__ip}, {self.__dest_port}).\n")
                         f.close()
 
             time.sleep(self.__sleep_time)

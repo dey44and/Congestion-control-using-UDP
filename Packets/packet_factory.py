@@ -28,4 +28,9 @@ class PacketFactory(object):
         elif self.__args[0] == "rm":
             self.__builder.set_control(packets.CONTROL_INSTR)
             self.__builder.set_command(packets.REMOVE_FILE)
+            return self.__builder.generate_packet() + self.__args[1].encode('utf-8')
+        # Generate a disconnect packet
+        elif self.__args[0] == "leave":
+            self.__builder.set_control(packets.CONTROL_CONN)
+            self.__builder.set_command(packets.CONN_LEAVE)
             return self.__builder.generate_packet()

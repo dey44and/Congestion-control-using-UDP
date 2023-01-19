@@ -12,7 +12,8 @@ info = "List of commands\n" \
        "ls - Show files\n" \
        "add [file_name] - Add a file\n" \
        "app [file_name] - Append to a file\n" \
-       "rm [file_name] - Remove a file\n"
+       "rm [file_name] - Remove a file\n" \
+       "leave - Disconnect from server"
 
 
 class Ui_MainWindow(object):

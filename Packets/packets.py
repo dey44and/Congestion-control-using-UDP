@@ -3,7 +3,12 @@ CONTROL_CONN = 0
 CONTROL_INSTR = 1
 CONTROL_RESPONSE = 2
 
-# Command
+# Connection parameters
+CONN_SYN = 0
+CONN_ACK = 1
+CONN_LEAVE = 2
+
+# Instruction parameters
 LIST_FILES = 0
 CREATE_FILE = 1
 APPEND_FILE = 2
