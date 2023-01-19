@@ -4,6 +4,7 @@ from PySide2.QtCore import (QCoreApplication, QMetaObject, QRect)
 from PySide2.QtGui import (QFont)
 from PySide2.QtWidgets import *
 
+from Conn.check_user import CheckUser
 from Entity import utility as util
 from Packets.packet_factory import PacketFactory
 from client import *
@@ -48,6 +49,7 @@ class Ui_MainWindow(object):
         self.display_instr = None
         self.textEdit = None
         self.statusbar = None
+        self.connect_db = None
 
     def setup_ui(self, main_window):
         if main_window.objectName():
@@ -116,7 +118,7 @@ class Ui_MainWindow(object):
         self.server_connection_title.setFont(font2)
         self.user_conn_frame = QFrame(self.centralwidget)
         self.user_conn_frame.setObjectName(u"user_conn_frame")
-        self.user_conn_frame.setGeometry(QRect(300, 30, 281, 111))
+        self.user_conn_frame.setGeometry(QRect(300, 30, 281, 141))
         self.user_conn_frame.setFrameShape(QFrame.Panel)
         self.user_conn_frame.setFrameShadow(QFrame.Raised)
 
@@ -136,14 +138,23 @@ class Ui_MainWindow(object):
         self.input_username = QLineEdit(self.user_conn_frame)
         self.input_username.setObjectName(u"input_username")
         self.input_username.setGeometry(QRect(110, 40, 151, 22))
+        self.input_username.setEnabled(False)
 
         self.input_password = QLineEdit(self.user_conn_frame)
         self.input_password.setObjectName(u"input_password")
         self.input_password.setGeometry(QRect(110, 70, 151, 22))
+        self.input_password.setEnabled(False)
 
         self.user_conn_title = QLabel(self.user_conn_frame)
         self.user_conn_title.setObjectName(u"user_conn_title")
         self.user_conn_title.setGeometry(QRect(10, 0, 181, 31))
+
+        self.connect_db = QPushButton(self.user_conn_frame)
+        self.connect_db.setObjectName(u"connect_db")
+        self.connect_db.setGeometry(QRect(85, 100, 93, 28))
+        self.connect_db.setEnabled(False)
+        # Connection button command
+        self.connect_db.clicked.connect(self.connect_to_db)
 
         font4 = QFont()
         font4.setPointSize(12)
@@ -158,6 +169,7 @@ class Ui_MainWindow(object):
         self.command_line = QLineEdit(self.frame)
         self.command_line.setObjectName(u"command_line")
         self.command_line.setGeometry(QRect(160, 40, 241, 22))
+        self.command_line.setEnabled(False)
 
         self.send_request_title = QLabel(self.frame)
         self.send_request_title.setObjectName(u"send_request_title")
@@ -172,12 +184,14 @@ class Ui_MainWindow(object):
         self.submit = QPushButton(self.frame)
         self.submit.setObjectName(u"submit")
         self.submit.setGeometry(QRect(432, 40, 131, 28))
+        self.submit.setEnabled(False)
         # Submit button command
         self.submit.clicked.connect(self.send_request)
 
         self.display_instr = QPushButton(self.frame)
         self.display_instr.setObjectName(u"display_instr")
         self.display_instr.setGeometry(QRect(430, 80, 131, 28))
+        self.display_instr.setEnabled(False)
         # Add display instruction button
         self.display_instr.clicked.connect(self.display_instructions)
 
@@ -209,6 +223,7 @@ class Ui_MainWindow(object):
         self.send_request_title.setText(QCoreApplication.translate("MainWindow", u"3. Send request", None))
         self.command_line_label.setText(QCoreApplication.translate("MainWindow", u"Command line:", None))
         self.submit.setText(QCoreApplication.translate("MainWindow", u"Send request", None))
+        self.connect_db.setText(QCoreApplication.translate("MainWindow", u"Connect", None))
         self.display_instr.setText(QCoreApplication.translate("MainWindow", u"Display all commands", None))
 
     def connect_to_server(self):
@@ -218,13 +233,13 @@ class Ui_MainWindow(object):
             test_passed = True
             if not util.is_valid_ip(self.input_ip.text()):
                 test_passed = False
-                self.textEdit.append("Error: Invalid IP Address!\n")
+                self.set_textedit_entry("Error: Invalid IP Address!\n")
             if not util.is_valid_port(self.input_sport.text()):
                 test_passed = False
-                self.textEdit.append("Error: Invalid Source Port number!\n")
+                self.set_textedit_entry("Error: Invalid Source Port number!\n")
             if not util.is_valid_port(self.input_dport.text()):
                 test_passed = False
-                self.textEdit.append("Error: Invalid Dest Port number!\n")
+                self.set_textedit_entry("Error: Invalid Dest Port number!\n")
 
             if test_passed:
                 try:
@@ -233,12 +248,14 @@ class Ui_MainWindow(object):
                     self.client.start()
 
                     self.connected_to_server = True
-                    self.textEdit.append("Info: Interface connected to the server!\n")
+                    # Activate interface control
+                    self.set_user_conn(True)
+                    self.set_textedit_entry("Info: Interface connected to the server!\n")
                 except:
-                    self.textEdit.append("Error: Problems while establishing a connection to the server!\n")
+                    self.set_textedit_entry("Error: Problems while establishing a connection to the server!\n")
                     sys.exit(-1)
         else:
-            self.textEdit.append("Warning: Interface already connected to server!")
+            self.set_textedit_entry("Warning: Interface already connected to server!")
 
     def send_request(self):
         # Get command from text box
@@ -250,6 +267,12 @@ class Ui_MainWindow(object):
         # Add to arguments content if command is app
         if arguments[0] == "app":
             arguments.append(self.textEdit.toPlainText())
+        # Append info text if command is leave
+        elif arguments[0] == "leave":
+            self.set_textedit_entry("INFO: Client disconnected from server.")
+            # Disable interface
+            self.set_user_conn(False)
+            self.set_request_frame(False)
 
         # Generate packet
         packet_generator: PacketFactory = PacketFactory(arguments)
@@ -261,3 +284,32 @@ class Ui_MainWindow(object):
     def display_instructions(self):
         self.textEdit.clear()
         self.textEdit.append(info)
+
+    def connect_to_db(self):
+        username_text = self.input_username.text()
+        password_text = self.input_password.text()
+        check_usr: CheckUser = CheckUser("C:\\Users\\Iosif\\Desktop\\Anul universitar 2022-2023\\Retele de calculatoare"
+                                         "\\RC - Proiect\\proiect-echipa-15\\SQLiteDatabaseBrowserPortable\\conn.db")
+        # If connection exists, request frame will be enabled
+        if check_usr.check(username_text, password_text):
+            self.set_request_frame(True)
+            self.set_textedit_entry("INFO: Connected to database.\nINFO: Now you can communicate with the server.")
+        else:
+            self.set_textedit_entry("ERROR: Invalid username or password!")
+
+    # Enable connection buttons
+    def set_user_conn(self, arg):
+        self.input_username.setEnabled(arg)
+        self.input_password.setEnabled(arg)
+        self.connect_db.setEnabled(arg)
+
+    # Enable command interface
+    def set_request_frame(self, arg):
+        self.command_line.setEnabled(arg)
+        self.submit.setEnabled(arg)
+        self.display_instr.setEnabled(arg)
+
+    # Set Text to text editor
+    def set_textedit_entry(self, text: str):
+        self.textEdit.clear()
+        self.textEdit.append(text)

@@ -37,10 +37,10 @@ class Server(Entity):
             self.running = True
 
             # Append history to debug
-            with open("../DebugSection/debug_server.txt", 'a') as f:
-                date = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-                f.write(f"\n{date}: Server is starting connection on ({self.__ip}, {self.__source_port})\n")
-                f.close()
+            with open("../DebugSection/debug_server.txt", 'a') as file:
+                date_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+                file.write(f"\n{date_time}: Server is starting connection on ({self.__ip}, {self.__source_port})\n")
+                file.close()
 
             # Server Execution
             while self.running:
@@ -51,10 +51,10 @@ class Server(Entity):
                     data, address = self.__sock.recvfrom(1024)
 
                     # Append history to debug
-                    with open("../DebugSection/debug_server.txt", 'a') as f:
-                        date = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-                        f.write(f"{date}: Receive UDP datagram from: {address}\n")
-                        f.close()
+                    with open("../DebugSection/debug_server.txt", 'a') as file:
+                        date_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+                        file.write(f"{date_time}: Receive UDP datagram from: {address}.\n")
+                        file.close()
 
                     # Unpack data and process it
                     control = data[0]
@@ -78,29 +78,30 @@ class Server(Entity):
                         self.__sock.sendto(packet, (self.__ip, self.__dest_port))
 
                         # Append history to debug
-                        with open("../DebugSection/debug_server.txt", 'a') as f:
-                            date = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-                            f.write(f"{date}: Send UDP datagram '{control} - {instruction}' to: ({self.__ip}, "
-                                    f"{self.__dest_port})\n")
-                            f.close()
+                        with open("../DebugSection/debug_server.txt", 'a') as file:
+                            date_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+                            file.write(f"{date_time}: Send UDP datagram '{control} - {instruction}' to: ({self.__ip}, "
+                                       f"{self.__source_port}).\n")
+                            file.close()
                     elif control == packets.CONTROL_CONN:
                         instruction = data[1]
 
                         # Check for leave connection
                         if instruction == packets.CONN_LEAVE:
                             # Append history to debug
-                            with open("../DebugSection/debug_server.txt", 'a') as f:
-                                date = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-                                f.write(f"{date}: Client ({self.__ip}, {self.__dest_port}) disconnected from server.\n")
-                                f.close()
+                            with open("../DebugSection/debug_server.txt", 'a') as file:
+                                date_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+                                file.write(f"{date_time}: Client ({self.__ip}, {self.__dest_port}) disconnected from "
+                                           f"server.\n")
+                                file.close()
 
                 time.sleep(self.__sleep_time)
         except:
             # Append history to debug
-            with open("../DebugSection/debug_server.txt", 'a') as f:
-                date = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-                f.write(f"\n{date}: Server is closing connection.\n")
-                f.close()
+            with open("../DebugSection/debug_server.txt", 'a') as file:
+                date_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+                file.write(f"\n{date_time}: Server is closing connection.\n")
+                file.close()
             sys.exit(-1)
 
 

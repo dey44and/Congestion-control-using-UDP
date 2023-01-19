@@ -28,7 +28,7 @@ Pe următorii 8 biți, se va salva tipul comenzii ce se dorește a fi executată
 
 Dacă pachetul este de tio CONNECTION, octetul va conține următoarele tipuri de notificări:
 
-| Nume Notificare | Cod |
+| Nume notificare | Cod |
 |-----------------|-----|
 | SYN             | 0   |
 | ACK             | 1   |
