@@ -14,7 +14,7 @@ Pentru început, orice pachet va fi format din 8 biți în care se va stoca tipu
 | INSTRUCTION | 1   |
 | RESPONSE    | 2   |
 
-Pe următorii 8 biți, se va salva tipul comenzii ce se dorește a fi executată sau care a fost executată, în cadrul pachetului de tip RESPONSE.
+Pe următorii 8 biți, se va salva tipul comenzii ce se dorește a fi executată, în cadrul pachetului tip INSTRUCTION sau care a fost executată, în cadrul pachetului de tip RESPONSE.
 
 | Nume comandă  | Cod |
 |---------------|-----|
@@ -25,3 +25,11 @@ Pe următorii 8 biți, se va salva tipul comenzii ce se dorește a fi executată
 | MOVE_FILE     | 4   |
 | DOWNLOAD_FILE | 5   |
 | UPLOAD_FILE   | 6   |
+
+Dacă pachetul este de tio CONNECTION, octetul va conține următoarele tipuri de notificări:
+
+| Nume Notificare | Cod |
+|-----------------|-----|
+| SYN             | 0   |
+| ACK             | 1   |
+| LEAVE           | 2   |
