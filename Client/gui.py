@@ -143,6 +143,7 @@ class Ui_MainWindow(object):
         self.input_password = QLineEdit(self.user_conn_frame)
         self.input_password.setObjectName(u"input_password")
         self.input_password.setGeometry(QRect(110, 70, 151, 22))
+        self.input_password.setEchoMode(QLineEdit.Password)
         self.input_password.setEnabled(False)
 
         self.user_conn_title = QLabel(self.user_conn_frame)
