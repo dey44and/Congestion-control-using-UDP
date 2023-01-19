@@ -75,7 +75,7 @@ class Server(Entity):
                             packet = remove_file_packet(data)
 
                         # Send packet to client
-                        self.__sock.sendto(packet, (self.__ip, self.__dest_port))
+                        self.__sock.sendto(packet, address)
 
                         # Append history to debug
                         with open("../DebugSection/debug_server.txt", 'a') as file:
@@ -107,22 +107,21 @@ class Server(Entity):
 
 if __name__ == "__main__":
     # Read UDP data from sysargv
-    if len(sys.argv) != 4:
+    if len(sys.argv) != 3:
         print("help : ")
         print("  --sport=source_port ")
-        print("  --dport=destination_port ")
         print("  --dip=peer_ip ")
         sys.exit()
 
     # Get arguments and initialize Server object
-    s_port, d_port, d_ip = util.get_arguments(sys.argv)
+    s_port, d_ip = util.get_arguments(sys.argv)
     udp_sleep_time = 0.01
 
     # Try to start the server
     try:
-        if not util.is_valid_ip(d_ip) or not util.is_valid_port(s_port) or not util.is_valid_port(d_port):
+        if not util.is_valid_ip(d_ip) or not util.is_valid_port(s_port):
             raise Exception()
-        server: Server = Server(s_port, d_port, d_ip, udp_sleep_time)
+        server: Server = Server(s_port, "0", d_ip, udp_sleep_time)
 
         # Start server connection
         server.start()
@@ -136,9 +135,4 @@ if __name__ == "__main__":
             f.write(f"\n{date}: Server is closing connection.\n")
             f.close()
     except:
-        # Append history to debug
-        with open("../DebugSection/debug_server.txt", 'a') as f:
-            date = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-            f.write(f"\n{date}: Server is closing connection.\n")
-            f.close()
         sys.exit(-1)

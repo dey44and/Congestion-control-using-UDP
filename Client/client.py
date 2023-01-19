@@ -77,7 +77,7 @@ class Client(Entity):
                             date = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
                             f.write(f"{date}: Send UDP datagram '{packet[0]} - {packet[1]}' to: ({self.__ip}, "
                                     f"{self.__source_port}).\n")
-                            f.write(f"{date}: Client ({self.__ip}, {self.__source_port}) disconnected from server.")
+                            f.write(f"{date}: Client ({self.__ip}, {self.__source_port}) disconnected from server.\n")
                             f.close()
                         break
 

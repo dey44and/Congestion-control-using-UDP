@@ -244,11 +244,9 @@ class Ui_MainWindow(object):
 
             if test_passed:
                 try:
-                    # Start client on different thread
+                    # Setup client
                     self.client = Client(self.input_sport.text(), self.input_dport.text(), self.input_ip.text(), 0.01)
-                    self.client.start()
 
-                    self.connected_to_server = True
                     # Activate interface control
                     self.set_user_conn(True)
                     self.set_textedit_entry("Info: Interface connected to the server!\n")
@@ -271,6 +269,7 @@ class Ui_MainWindow(object):
         # Append info text if command is leave
         elif arguments[0] == "leave":
             self.set_textedit_entry("INFO: Client disconnected from server.")
+            self.connected_to_server = False
             # Disable interface
             self.set_user_conn(False)
             self.set_request_frame(False)
@@ -293,6 +292,10 @@ class Ui_MainWindow(object):
                                          "\\RC - Proiect\\proiect-echipa-15\\SQLiteDatabaseBrowserPortable\\conn.db")
         # If connection exists, request frame will be enabled
         if check_usr.check(username_text, password_text):
+            # Connect client to server
+            self.client.start()
+            self.connected_to_server = True
+
             self.set_request_frame(True)
             self.set_textedit_entry("INFO: Connected to database.\nINFO: Now you can communicate with the server.")
         else:
