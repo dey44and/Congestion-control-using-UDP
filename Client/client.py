@@ -23,8 +23,10 @@ class Client(Entity):
         self.__sock: socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM, socket.IPPROTO_UDP)
         self.__sleep_time = sleep_time
 
+        # Communication attributes
         self.__running = False
         self.__timeout_socket = 1
+        self.__state = "Idle"
 
     def run(self):
         # Create UDP Socket
@@ -43,52 +45,70 @@ class Client(Entity):
             r, _, _ = select.select([self.__sock], [], [], 1)
             # If client receive data, it will process it
             if r:
-                # Get data from server
-                data, address = self.__sock.recvfrom(1024)
-
-                # Append history to debug
-                with open("../DebugSection/debug_client.txt", 'a') as f:
-                    date = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-                    f.write(f"{date}: Receive UDP datagram from: {address}.\n")
-                    f.close()
-
-                # Handle packet content
-                control = data[0]
-                if control == packets.CONTROL_RESPONSE:
-                    instruction = data[1]
-                    if instruction == packets.LIST_FILES or instruction == packets.CREATE_FILE \
-                            or instruction == packets.APPEND_FILE or instruction == packets.REMOVE_FILE:
-                        content = data[2:].decode('utf-8')
-                        print(content)
-
+                # If client is in idle state, he is ready to receive one packet
+                if self.__state == "Idle":
+                    self.__receive_one_packet_handler()
+                # If client is in watch congestion state, he is ready to receive more packets
+                elif self.__state == "Watch":
+                    pass
             # Otherwise, he will send a packet from queue
             else:
-                # Check if queue is not empty
-                if len(self.__queue) > 0:
-                    # Get first packet and send it to server
-                    packet = self.__queue.pop(0)
-                    self.__sock.sendto(packet, (self.__ip, self.__dest_port))
-
-                    # Check for leave packet
-                    if packet[0] == packets.CONTROL_CONN and packet[1] == packets.CONN_LEAVE:
-                        self.__running = False
-                        # Append history to debug
-                        with open("../DebugSection/debug_client.txt", 'a') as f:
-                            date = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-                            f.write(f"{date}: Client ('{self.__ip}', {self.__source_port}) send UDP datagram "
-                                    f"'{packet[0]} - {packet[1]}' to: ('{self.__ip}', {self.__source_port}).\n")
-                            f.write(f"{date}: Client ('{self.__ip}', {self.__source_port}) disconnected from server.\n")
-                            f.close()
-                        break
-
-                    # Append history to debug
-                    with open("../DebugSection/debug_client.txt", 'a') as f:
-                        date = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-                        f.write(f"{date}: Client ('{self.__ip}', {self.__source_port}) send UDP datagram "
-                                f"'{packet[0]} - {packet[1]}' to: ('{self.__ip}', {self.__source_port}).\n")
-                        f.close()
-
+                # If client is in idle state, he is ready to send one packet
+                if self.__state == "Idle":
+                    self.__send_one_packet_handler()
+                # If client is in watch congestion state, he is ready to send more packests
+                elif self.__state == "Watch":
+                    pass
             time.sleep(self.__sleep_time)
 
     def add_packet(self, packet: bytes):
         self.__queue.append(packet)
+
+    # Handler for one packet receive
+    def __receive_one_packet_handler(self):
+        # Get data from server
+        data, address = self.__sock.recvfrom(1024)
+
+        # Append history to debug
+        with open("../DebugSection/debug_client.txt", 'a') as f:
+            date = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+            f.write(f"{date}: Receive UDP datagram from: {address}.\n")
+            f.close()
+
+        # Handle packet content
+        control = data[0]
+        if control == packets.CONTROL_RESPONSE:
+            instruction = data[1]
+            if instruction == packets.LIST_FILES or instruction == packets.CREATE_FILE \
+                    or instruction == packets.APPEND_FILE or instruction == packets.REMOVE_FILE:
+                content = data[2:].decode('utf-8')
+                print(content)
+
+    # Handler for one packet send
+    def __send_one_packet_handler(self):
+        # Check if queue is not empty
+        if len(self.__queue) > 0:
+            # Get first packet and send it to server
+            packet = self.__queue.pop(0)
+            self.__sock.sendto(packet, (self.__ip, self.__dest_port))
+
+            # Check for append to file packet (needs congestion control)
+
+            # Check for leave packet
+            if packet[0] == packets.CONTROL_CONN and packet[1] == packets.CONN_LEAVE:
+                self.__running = False
+                # Append history to debug
+                with open("../DebugSection/debug_client.txt", 'a') as f:
+                    date = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+                    f.write(f"{date}: Client ('{self.__ip}', {self.__source_port}) send UDP datagram "
+                            f"'{packet[0]} - {packet[1]}' to: ('{self.__ip}', {self.__source_port}).\n")
+                    f.write(f"{date}: Client ('{self.__ip}', {self.__source_port}) disconnected from server.\n")
+                    f.close()
+                self.__running = False
+
+            # Append history to debug
+            with open("../DebugSection/debug_client.txt", 'a') as f:
+                date = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+                f.write(f"{date}: Client ('{self.__ip}', {self.__source_port}) send UDP datagram "
+                        f"'{packet[0]} - {packet[1]}' to: ('{self.__ip}', {self.__source_port}).\n")
+                f.close()

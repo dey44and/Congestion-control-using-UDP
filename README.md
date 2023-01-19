@@ -11,6 +11,12 @@ Este un serviciu neorientat conexiune: nu se stabilește o conexiune între clie
 Este întâlnit în sistemele client-server în care se transmit puține mesaje și în general prea rar pentru a menține o conexiune activă între cele două entități. <br/><br/>
 Nu se garantează ordinea primirii mesajelor și nici prevenirea pierderilor pachetelor. UDP-ul se utilizează mai ales în rețelele în care există o pierdere foarte mică de pachete și în cadrul aplicațiilor pentru care pierderea unui pachet nu este foarte gravă (ex. Aplicațiile de streaming video). <br/>
 
+## Gestionarea congestiei
+
+Protocolul UDP este orientat pe trimiterea pachetelor și nu este orientat pe conexiune, așa cum se întâmplă în cazul protocolului TCP.<br/></br>
+În cadrul protocolului TCP, există o serie de algoritmi care tratează apariția congestiei. Printre aceștia, amintim: Tahoe, Reno, New Reno și Vegas.<br></br>
+Aplicația va implementa funcționalitatea algoritmului _Tahoe_ pentru transmisia pachetelor folosind UDP într-o arhitectură de tip **client-server**.
+
 ## Configurarea server-ului
 
 Configurarea unui server se realizează prin specificarea adresei IP și a portului sursă. Acestea trebuie să fie cunoscute și de clientul ce dorește să se conecteze.
@@ -69,4 +75,4 @@ Pentru pachetul ce va realiza __adăugarea de conținut__, __descărcarea unui f
 
 | COD_INSTRUCȚIUNE  | COD_COMANDĂ | NUMĂR_PACHET  | LUNGIME_FIȘIER | NUME_FIȘIER | CONȚINUT_PACHET |
 |-------------------|-------------|---------------|----------------|-------------|-----------------|
-| 8 BIȚI            | 8 BIȚI      | 8 BIȚI        | 8 BIȚI         | x BIȚI      | x BIȚI          |
+| 8 BIȚI            | 8 BIȚI      | 8 BIȚI        | 8 BIȚI         | x BIȚI      | 1 - 512 BIȚI    |

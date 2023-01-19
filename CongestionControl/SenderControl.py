@@ -30,10 +30,17 @@ class SenderControl(object):
             self.__ssthresh = int(self.__cwnd / 2)
             self.__cwnd = self.__mss
 
+    # Method to get value of cwnd
     def get_cwnd(self):
         return int(round(self.__cwnd))
 
-
-
-
-
+    # Method to reset attributes of algorithm
+    def reset(self):
+        # Initialize maximum segment size
+        self.__mss: int = 1
+        # Initialize congestion window size
+        self.__cwnd: float = 1
+        # Initialize slow start threshold
+        self.__ssthresh: int = 65536
+        # Set initial state
+        self.__state: str = "SlowStart"

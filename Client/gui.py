@@ -55,7 +55,7 @@ class Ui_MainWindow(object):
         if main_window.objectName():
             main_window.setObjectName(u"Client App")
 
-        main_window.resize(587, 635)
+        main_window.setFixedSize(587, 635)
         self.centralwidget = QWidget(main_window)
         self.centralwidget.setObjectName(u"centralwidget")
 
