@@ -80,7 +80,8 @@ class Server(Entity):
                         # Append history to debug
                         with open("../DebugSection/debug_server.txt", 'a') as f:
                             date = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-                            f.write(f"{date}: Send UDP datagram to: ({self.__ip}, {self.__dest_port})\n")
+                            f.write(f"{date}: Send UDP datagram '{control} - {instruction}' to: ({self.__ip}, "
+                                    f"{self.__dest_port})\n")
                             f.close()
                     elif control == packets.CONTROL_CONN:
                         instruction = data[1]

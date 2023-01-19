@@ -75,7 +75,8 @@ class Client(Entity):
                         # Append history to debug
                         with open("../DebugSection/debug_client.txt", 'a') as f:
                             date = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-                            f.write(f"{date}: Send UDP datagram to: ({self.__ip}, {self.__dest_port}).\n")
+                            f.write(f"{date}: Send UDP datagram '{packet[0]} - {packet[1]}' to: ({self.__ip}, "
+                                    f"{self.__dest_port}).\n")
                             f.write(f"{date}: Client ({self.__ip}, {self.__source_port}) disconnected from server.")
                             f.close()
                         break
@@ -83,7 +84,8 @@ class Client(Entity):
                     # Append history to debug
                     with open("../DebugSection/debug_client.txt", 'a') as f:
                         date = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-                        f.write(f"{date}: Send UDP datagram to: ({self.__ip}, {self.__dest_port}).\n")
+                        f.write(f"{date}: Send UDP datagram '{packet[0]} - {packet[1]}' to: ({self.__ip}, "
+                                f"{self.__dest_port}).\n")
                         f.close()
 
             time.sleep(self.__sleep_time)
