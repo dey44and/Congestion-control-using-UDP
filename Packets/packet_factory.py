@@ -1,5 +1,5 @@
 from Builder.Builder import PacketBuilder
-from Packets import packets
+from Packets import packet_items as packets
 
 
 class PacketFactory(object):

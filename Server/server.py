@@ -6,7 +6,7 @@ import select
 from Commander.commands import *
 from Entity import utility as util
 from Entity.entity import Entity
-from Packets import packets
+from Packets import packet_items as packets
 
 path = "./Root/"
 
@@ -63,7 +63,7 @@ class Server(Entity):
 
                         # List file instruction
                         if instruction == packets.LIST_FILES:
-                            packet = list_files_packet(data)
+                            packet = list_files_packet()
                         # Add file instruction
                         elif instruction == packets.CREATE_FILE:
                             packet = create_file_packet(data)
@@ -80,8 +80,8 @@ class Server(Entity):
                         # Append history to debug
                         with open("../DebugSection/debug_server.txt", 'a') as file:
                             date_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-                            file.write(f"{date_time}: Send UDP datagram '{control} - {instruction}' to: ({self.__ip}, "
-                                       f"{self.__source_port}).\n")
+                            file.write(f"{date_time}: Server Send UDP datagram '{control} - {instruction}' to: "
+                                       f"{address}.\n")
                             file.close()
                     elif control == packets.CONTROL_CONN:
                         instruction = data[1]
@@ -91,7 +91,7 @@ class Server(Entity):
                             # Append history to debug
                             with open("../DebugSection/debug_server.txt", 'a') as file:
                                 date_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-                                file.write(f"{date_time}: Client ({self.__ip}, {self.__dest_port}) disconnected from "
+                                file.write(f"{date_time}: Client ('{self.__ip}', {self.__dest_port}) disconnected from "
                                            f"server.\n")
                                 file.close()
 

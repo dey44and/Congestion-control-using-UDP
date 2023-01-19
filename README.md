@@ -4,15 +4,22 @@ Congestia unei rețele este o stare care apare atunci când traficul este atât 
 Efectele acesteia sunt: întârzierile, pierderea pachetelor sau blocarea noilor conexiuni.
 Controlul congestiei este un mecanism prin care se evită apariția acesteia.
 
+## Protocolul UDP
+
+UDP (User Datagram Protocol) este un protocol ce trimite pachete independente de date, numite datagrame, de la un calculator către altul, fără a garanta în vreun fel ajungerea acestora la destinație. <br/><br/>
+Este un serviciu neorientat conexiune: nu se stabilește o conexiune între client și server. Așadar, server-ul nu așteaptă apeluri de conexiune, ci primește direct datagrame de la clienți. <br/><br/>
+Este întâlnit în sistemele client-server în care se transmit puține mesaje și în general prea rar pentru a menține o conexiune activă între cele două entități. <br/><br/>
+Nu se garantează ordinea primirii mesajelor și nici prevenirea pierderilor pachetelor. UDP-ul se utilizează mai ales în rețelele în care există o pierdere foarte mică de pachete și în cadrul aplicațiilor pentru care pierderea unui pachet nu este foarte gravă (ex. Aplicațiile de streaming video). <br/>
+
+## Configurarea server-ului
+
+Configurarea unui server se realizează prin specificarea adresei IP și a portului sursă. Acestea trebuie să fie cunoscute și de clientul ce dorește să se conecteze.
+
 ## Stabilirea conexiunii către server
 
 1. Conexiunea se realizează prin specificarea adresei IP, a portului sursă (client) și a portului destinație (server).
 2. După stabilirea parametrilor de comunicare, se va realiza conectarea la baza de date și validarea utilizatorului ce dorește să folosească interfața.
 3. Apoi, interfața devine activă iar utilizatorul poate trimite și recepționa pachete de la server.
-
-## Configurarea server-ului
-
-Configurarea unui server se realizează prin specificarea adresei IP și a portului sursă. Acestea trebuie să fie cunoscute și de clientul ce dorește să se conecteze.
 
 ## Formatul pachetelor ce vor fi trimise
 
@@ -43,3 +50,23 @@ Dacă pachetul este de tip CONNECTION, octetul va conține următoarele tipuri d
 | SYN             | 0   |
 | ACK             | 1   |
 | LEAVE           | 2   |
+
+## Structura pachetelor prin care se va realiza comunicarea
+
+Pentru pachetul ce va cere __afișarea fișierelor__ sau __deconectarea de la server__, structura este:
+
+| COD_INSTRUCȚIUNE | COD_COMANDĂ |
+|------------------|-------------|
+| 8 BIȚI           | 8 BIȚI      |
+
+Pentru pachetul ce va cere __adăugarea unui fișier__ sau __ștergerea unui fișier__, structura este:
+
+| COD_INSTRUCȚIUNE | COD_COMANDĂ | NUME_FIȘIER |
+|------------------|-------------|-------------|
+| 8 BIȚI           | 8 BIȚI      | x BIȚI      |
+
+Pentru pachetul ce va realiza __adăugarea de conținut__, __descărcarea unui fișier__ sau __încărcarea unui fișier__, structura este:
+
+| COD_INSTRUCȚIUNE  | COD_COMANDĂ | NUMĂR_PACHET  | LUNGIME_FIȘIER | NUME_FIȘIER | CONȚINUT_PACHET |
+|-------------------|-------------|---------------|----------------|-------------|-----------------|
+| 8 BIȚI            | 8 BIȚI      | 8 BIȚI        | 8 BIȚI         | x BIȚI      | x BIȚI          |

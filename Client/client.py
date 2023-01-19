@@ -4,7 +4,7 @@ import select
 import time
 
 from Entity.entity import Entity
-from Packets import packets
+from Packets import packet_items as packets
 
 
 # noinspection PyBroadException
@@ -34,7 +34,7 @@ class Client(Entity):
         # Append history to debug
         with open("../DebugSection/debug_client.txt", 'a') as f:
             date = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-            f.write(f"\n{date}: Client ({self.__ip}, {self.__source_port}) is connecting to server.\n")
+            f.write(f"{date}: Client ('{self.__ip}', {self.__source_port}) is connecting to server.\n")
             f.close()
 
         # Client execution
@@ -75,17 +75,17 @@ class Client(Entity):
                         # Append history to debug
                         with open("../DebugSection/debug_client.txt", 'a') as f:
                             date = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-                            f.write(f"{date}: Send UDP datagram '{packet[0]} - {packet[1]}' to: ({self.__ip}, "
-                                    f"{self.__source_port}).\n")
-                            f.write(f"{date}: Client ({self.__ip}, {self.__source_port}) disconnected from server.\n")
+                            f.write(f"{date}: Client ('{self.__ip}', {self.__source_port}) send UDP datagram "
+                                    f"'{packet[0]} - {packet[1]}' to: ('{self.__ip}', {self.__source_port}).\n")
+                            f.write(f"{date}: Client ('{self.__ip}', {self.__source_port}) disconnected from server.\n")
                             f.close()
                         break
 
                     # Append history to debug
                     with open("../DebugSection/debug_client.txt", 'a') as f:
                         date = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-                        f.write(f"{date}: Send UDP datagram '{packet[0]} - {packet[1]}' to: ({self.__ip}, "
-                                f"{self.__source_port}).\n")
+                        f.write(f"{date}: Client ('{self.__ip}', {self.__source_port}) send UDP datagram "
+                                f"'{packet[0]} - {packet[1]}' to: ('{self.__ip}', {self.__source_port}).\n")
                         f.close()
 
             time.sleep(self.__sleep_time)

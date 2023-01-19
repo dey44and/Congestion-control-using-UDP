@@ -1,12 +1,12 @@
 import os
 
 from Builder.Builder import PacketBuilder
-from Packets import packets
+from Packets import packet_items as packets
 
 path = ".\\Root\\"
 
 
-def list_files_packet(data: bytes) -> bytes:
+def list_files_packet() -> bytes:
     result = "Files:\n"
     for subdir, dirs, files in os.walk('./Root'):
         for file in files:
