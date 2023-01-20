@@ -19,7 +19,7 @@ Aplicația va implementa funcționalitatea algoritmului _Tahoe_ pentru transmisi
 
 ## Algoritmul Tahoe
 
-Algoritmul Tahoe a fost numit după un lac din din Statele Unite ale Americii. Acest algoritm particular a fost dezvoltat în acea zonă, de unde a rezultat numele.<br/><br/>
+Algoritmul Tahoe a fost numit după un lac din Statele Unite ale Americii. Acest algoritm particular a fost dezvoltat în acea zonă, de unde a rezultat numele.<br/><br/>
 Stările algoritmului sunt: **Slow Start**, **AIMD** și **Fast Rentransmit**.<br/><br/>
 **Starea Slow Start**: Starea este activă până când dimensiunea ferestrei (_cwnd_) devine egală cu _sshtresh_.
 În această fază, dimensiunea ferestrei se dublează la fiecare segment de date trimis și recepționat (_RTT_).
@@ -101,7 +101,7 @@ Folosind structura pachetelor definită mai sus, aplicația va implementa următ
 - adăugarea de conținut la un fișier
 - ștergerea unui fișier
 
-Amintim că controlul congestiei folosind Algoritmul Tahoe se va realiza doar în cazul celei de a doua operații, în care conținutul ce se dorește a fi adăugat va fi împărțit în pachete ce vor fi transmise către server.
+Amintim că mecanismul de control al congestiei folosind Algoritmul Tahoe se va realiza doar în cazul celei de a doua operații, în care conținutul ce se dorește a fi adăugat va fi împărțit în pachete ce vor fi transmise către server.
 
 ## Paradigme de programare folosite
 

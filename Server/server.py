@@ -1,11 +1,11 @@
+import random
 import socket
 import sys
-import threading
 import time
 from datetime import datetime
-import random
 
 import select
+
 from Commander.commands import *
 from Entity import utility as util
 from Entity.entity import Entity
