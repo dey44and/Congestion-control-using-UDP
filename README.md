@@ -1,6 +1,6 @@
-# Implementarea unui mecanism de control al congestiei. Aplicație demonstrativă
+# Implementarea unui mecanism de control al congestiei. Aplicație demonstrativă (UDP)
 
-Congestia unei rețele este o stare care apare atunci când traficul este atât de încărcat încât încetinește timpul de răspuns al rețelei. Cu alte cuvinte, prin rețea circulă mai multe date decât ar trebui.
+Congestia unei rețele este o stare care apare atunci când traficul este atât de încărcat încât încetinește timpul de răspuns al acesteia. Cu alte cuvinte, prin rețea circulă mai multe date decât ar trebui.
 Efectele acesteia sunt: întârzierile, pierderea pachetelor sau blocarea noilor conexiuni.
 Controlul congestiei este un mecanism prin care se evită apariția acesteia.
 
@@ -16,6 +16,20 @@ Nu se garantează ordinea primirii mesajelor și nici prevenirea pierderilor pac
 Protocolul UDP este orientat pe trimiterea pachetelor și nu este orientat pe conexiune, așa cum se întâmplă în cazul protocolului TCP.<br/></br>
 În cadrul protocolului TCP, există o serie de algoritmi care tratează apariția congestiei. Printre aceștia, amintim: Tahoe, Reno, New Reno și Vegas.<br></br>
 Aplicația va implementa funcționalitatea algoritmului _Tahoe_ pentru transmisia pachetelor folosind UDP într-o arhitectură de tip **client-server**.
+
+## Algoritmul Tahoe
+
+Algoritmul Tahoe a fost numit după un lac din din Statele Unite ale Americii. Acest algoritm particular a fost dezvoltat în acea zonă, de unde a rezultat numele.<br/><br/>
+Stările algoritmului sunt: **Slow Start**, **AIMD** și **Fast Rentransmit**.<br/><br/>
+**Starea Slow Start**: Starea este activă până când dimensiunea ferestrei (_cwnd_) devine egală cu _sshtresh_.
+În această fază, dimensiunea ferestrei se dublează la fiecare segment de date trimis și recepționat (_RTT_).
+Atunci când cwnd atinge valoarea lui sshtresh, starea încetează și cedează locul stării **AIMD**.<br/>
+
+**Starea AIMD**: În această fază _cwnd_ crește după formula **CWND = MSS * MSS / CWND**, unde _MSS_ este dimensiunea maximă a unui segment.
+În același timp, _sshtresh_ va fi redus la jumătate din valoarea curentă a _cwnd_.<br/>
+
+**Starea Fast Retransmit**: În momentul în care se primesc trei pachete duplicate ca răspuns, algoritmul trece în această fază.
+Aici valoarea _cwnd_ este setată la 1, apoi se va relua transmisia pachetelor în starea **Slow Start**.
 
 ## Configurarea server-ului
 
@@ -45,21 +59,18 @@ Pe următorii 8 biți, se va salva tipul comenzii ce se dorește a fi executată
 | CREATE_FILE   | 1   |
 | APPEND_FILE   | 2   |
 | REMOVE_FILE   | 3   |
-| MOVE_FILE     | 4   |
-| DOWNLOAD_FILE | 5   |
-| UPLOAD_FILE   | 6   |
 
 Dacă pachetul este de tip CONNECTION, octetul va conține următoarele tipuri de notificări:
 
 | Nume notificare | Cod |
 |-----------------|-----|
-| SYN             | 0   |
-| ACK             | 1   |
-| LEAVE           | 2   |
+| ACK             | 0   |
+| LEAVE           | 1   |
+| OVER            | 2   |
 
 ## Structura pachetelor prin care se va realiza comunicarea
 
-Pentru pachetul ce va cere __afișarea fișierelor__ sau __deconectarea de la server__, structura este:
+Pentru pachetul ce va cere __afișarea fișierelor__, __finalizarea transmisiei__ sau __deconectarea de la server__, structura este:
 
 | COD_INSTRUCȚIUNE | COD_COMANDĂ |
 |------------------|-------------|
@@ -82,3 +93,18 @@ Pentru pachetul ce va realiza __confirmarea datelor__, structura este:
 | COD_INSTRUCȚIUNE | COD_COMANDĂ | NUMĂR_PACHET_URMĂTOR |
 |------------------|-------------|----------------------|
 | 8 BIȚI           | 8 BIȚI      | 8 BIȚI               |
+
+## Operatii implementate
+
+Folosind structura pachetelor definită mai sus, aplicația va implementa următoarele operații:
+- crearea unui fișier
+- adăugarea de conținut la un fișier
+- ștergerea unui fișier
+
+Amintim că controlul congestiei folosind Algoritmul Tahoe se va realiza doar în cazul celei de a doua operații, în care conținutul ce se dorește a fi adăugat va fi împărțit în pachete ce vor fi transmise către server.
+
+## Rezultate
+
+Mai jos, se află rezultatele obținute în urma transferului a 176 de datagrame, prin care s-a transportat conținutul unui fișier text.
+
+![Grafic evolutie cwnd](Statistics/grafic.png)

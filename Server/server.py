@@ -1,5 +1,6 @@
 import socket
 import sys
+import threading
 import time
 from datetime import datetime
 import random
@@ -149,8 +150,8 @@ class Server(Entity):
             # For every packet, we format and send back response
             for packet_item in packets_list:
                 # Check if is an over packet
-                if packet_item[1] == packets.CONN_OVER:
-                    # Create a thread to save data, then clear data
+                if packet_item[0] == packets.CONTROL_CONN and packet_item[1] == packets.CONN_OVER:
+                    # Create a run to save data, then clear data
                     write_to_file(self.__pckts)
                     self.__pckts.clear()
 

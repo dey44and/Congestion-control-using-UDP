@@ -189,6 +189,7 @@ class Client(Entity):
             # Check for append to file packet (needs congestion control)
             if packet[0] == packets.CONTROL_INSTR and packet[1] == packets.APPEND_FILE:
                 # Client enter in congestion avoidance state and it reinitialize controller
+                print(f"Client will send to server {self.__packets_to_send} packets.")
                 print(f"Client send packet with number {packet[2]}")
                 self.__state = "Watch"
                 self.__multireceive_mode = packets.APPEND_FILE
