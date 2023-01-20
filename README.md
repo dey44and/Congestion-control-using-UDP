@@ -103,8 +103,32 @@ Folosind structura pachetelor definită mai sus, aplicația va implementa următ
 
 Amintim că controlul congestiei folosind Algoritmul Tahoe se va realiza doar în cazul celei de a doua operații, în care conținutul ce se dorește a fi adăugat va fi împărțit în pachete ce vor fi transmise către server.
 
+## Paradigme de programare folosite
+
+În implementarea aplicației, a fost folosită paradigma programării orientate pe obiecte, dar și elemente de programare funcțională.<br/>
+
+Aplicația utilizează mai multe șabloane de proiectare:
+- Constructor (Builder) - pentru crearea pachetelor;
+- Fabrică de obiecte (Factory) - pentru formatarea pachetelor în funcție de operația realizată;
+- Comandă (Commander) - pentru realizarea operațiilor de răspuns ale server-ului după primirea unui pachet.
+
+Diagrama UML de clase este următoarea:
+
+![Diagrama UML](UML_Diagram.png)
+
 ## Rezultate
 
-Mai jos, se află rezultatele obținute în urma transferului a 176 de datagrame, prin care s-a transportat conținutul unui fișier text.
+Mai jos, se află rezultatele obținute în urma transferului a 176 de datagrame, prin care s-a transportat conținutul unui fișier text,
+în cadrul căruia server-ul a avut o rată de primire a pachetelor de 95%.
 
 ![Grafic evolutie cwnd](Statistics/grafic.png)
+
+## Bibliografie
+
+[1] TCP/IP Illustrated, Volume 2, W. Richard Stevens and Gary R. Wright, Addison-Wesley Professional<br/>
+
+[2] RFC 768, User Datagram Protocol, J. Postel, 28 August 1980<br/>
+
+[3] RFC 2914, Congestion Control Principles, S. Floyd, September 2000<br/>
+
+[4] RFC 5681, TCP Congestion Control, Purdue University, September 2009<br/>

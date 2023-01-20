@@ -170,6 +170,14 @@ class Client(Entity):
                     items = ["over"]
                     packet = PacketFactory(items).get_packet()
                     self.__sock.sendto(packet, server_adress)
+
+                    # Append history to debug
+                    with open("../DebugSection/debug_client.txt", 'a') as f:
+                        date = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+                        f.write(f"{date}: Client ('{self.__ip}', {self.__source_port}) send UDP datagram "
+                                f"'{packet[0]} - {packet[1]}' to: ('{self.__ip}', {self.__source_port}).\n")
+                        f.close()
+
                     print("INFO: Announce server that transmission is over.")
 
                 # Info for debug
@@ -254,9 +262,18 @@ class Client(Entity):
                     # Resend packets
                     packet = self.__unsend_packets.pop(0)
                     self.__sock.sendto(packet, (self.__ip, self.__dest_port))
-                    self.__controller.increment_packets()
                     print(f"Client send packet with number {packet[2]}")
+
+                    # Update congestion control
+                    self.__controller.increment_packets()
                     self.__current_session_send_packets += 1
+
+                    # Append history to debug
+                    with open("../DebugSection/debug_client.txt", 'a') as f:
+                        date = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+                        f.write(f"{date}: Client ('{self.__ip}', {self.__source_port}) send UDP datagram "
+                                f"'{packet[0]} - {packet[1]}' to: ('{self.__ip}', {self.__source_port}).\n")
+                        f.close()
 
                 # Get back unsed packets
                 self.__unsend_packets = unsend_packets_clone
@@ -272,11 +289,18 @@ class Client(Entity):
                     break
 
                 # Otherwise, get and send the packet
-                packet = self.__queue.pop(0)
-                self.__sock.sendto(packet, (self.__ip, self.__dest_port))
-                print(f"Client send packet with number {packet[2]}")
+                pckt = self.__queue.pop(0)
+                self.__sock.sendto(pckt, (self.__ip, self.__dest_port))
+                print(f"Client send packet with number {pckt[2]}")
 
                 # Update control for congestion
-                self.__unsend_packets.append(packet)
+                self.__unsend_packets.append(pckt)
                 self.__controller.update_cwnd()
                 self.__current_session_send_packets += 1
+
+                # Append history to debug
+                with open("../DebugSection/debug_client.txt", 'a') as f:
+                    date = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+                    f.write(f"{date}: Client ('{self.__ip}', {self.__source_port}) send UDP datagram "
+                            f"'{pckt[0]} - {pckt[1]}' to: ('{self.__ip}', {self.__source_port}).\n")
+                    f.close()
