@@ -73,6 +73,12 @@ Pentru pachetul ce va cere __adăugarea unui fișier__ sau __ștergerea unui fi�
 
 Pentru pachetul ce va realiza __adăugarea de conținut__, __descărcarea unui fișier__ sau __încărcarea unui fișier__, structura este:
 
-| COD_INSTRUCȚIUNE  | COD_COMANDĂ | NUMĂR_PACHET  | LUNGIME_FIȘIER | NUME_FIȘIER | CONȚINUT_PACHET |
-|-------------------|-------------|---------------|----------------|-------------|-----------------|
-| 8 BIȚI            | 8 BIȚI      | 8 BIȚI        | 8 BIȚI         | x BIȚI      | 1 - 512 BIȚI    |
+| COD_INSTRUCȚIUNE  | COD_COMANDĂ | NUMĂR_PACHET_CURENT | NUMĂR_PACHETE |  NUME_FIȘIER | CONȚINUT_PACHET |
+|-------------------|-------------|---------------------|---------------|--------------|-----------------|
+| 8 BIȚI            | 8 BIȚI      | 8 BIȚI              | 8 BIȚI        |  x BIȚI      | 1 - 512 BIȚI    |
+
+Pentru pachetul ce va realiza __confirmarea datelor__, structura este:
+
+| COD_INSTRUCȚIUNE | COD_COMANDĂ | NUMĂR_PACHET_URMĂTOR |
+|------------------|-------------|----------------------|
+| 8 BIȚI           | 8 BIȚI      | 8 BIȚI               |

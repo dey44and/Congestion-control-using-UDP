@@ -276,10 +276,20 @@ class Ui_MainWindow(object):
 
         # Generate packet
         packet_generator: PacketFactory = PacketFactory(arguments)
-        packet = packet_generator.get_packet()
+        pckts = packet_generator.get_packet()
 
         # Send packet to client
-        self.client.add_packet(packet)
+        if type(pckts) is bytes:
+            self.client.add_packet(pckts)
+            self.client.set_packets_to_send(1)
+        elif len(pckts) == 1:
+            self.client.add_packet(pckts[0])
+            self.client.set_packets_to_send(1)
+        else:
+            self.client.set_packets_to_send(len(pckts))
+            for packet in pckts:
+                self.client.add_packet(packet)
+
 
     def display_instructions(self):
         self.textEdit.clear()

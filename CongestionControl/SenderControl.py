@@ -9,9 +9,13 @@ class SenderControl(object):
         self.__ssthresh: int = 65536
         # Set initial state
         self.__state: str = "SlowStart"
+        # Set packet number
+        self.__packet_number: int = 0
 
     # Update congestion window
     def update_cwnd(self):
+        self.__packet_number += 1
+
         if self.__state == "SlowStart":
             self.__cwnd += 1
         elif self.__state == "AIMD":
@@ -21,8 +25,14 @@ class SenderControl(object):
         if self.__state == "SlowStart" and self.__cwnd > self.__ssthresh:
             self.__state = "AIMD"
 
+    # Increment number of packets
+    def increment_packets(self):
+        self.__packet_number += 1
+
     # Manage lost packet
-    def packet_lost(self):
+    def packet_lost(self, send_packets: int):
+        self.__packet_number = send_packets
+
         if self.__state == "SlowStart":
             self.__state = "AIMD"
         elif self.__state == "AIMD":
@@ -34,6 +44,10 @@ class SenderControl(object):
     def get_cwnd(self):
         return int(round(self.__cwnd))
 
+    # Method to get number of received packets
+    def get_send_packets(self):
+        return self.__packet_number
+
     # Method to reset attributes of algorithm
     def reset(self):
         # Initialize maximum segment size
@@ -44,3 +58,5 @@ class SenderControl(object):
         self.__ssthresh: int = 65536
         # Set initial state
         self.__state: str = "SlowStart"
+        # Set packet number
+        self.__packet_number: int = 0

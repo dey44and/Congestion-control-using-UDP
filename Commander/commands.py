@@ -13,7 +13,7 @@ def list_files_packet() -> bytes:
             result += "-> " + file + "\n"
 
     # Generate a list file packet
-    builder: PacketBuilder = PacketBuilder()
+    builder: PacketBuilder = PacketBuilder("")
     builder.set_control(packets.CONTROL_RESPONSE)
     builder.set_command(packets.LIST_FILES)
 
@@ -23,7 +23,7 @@ def list_files_packet() -> bytes:
 
 def create_file_packet(data: bytes) -> bytes:
     # Generate a create file packet
-    builder: PacketBuilder = PacketBuilder()
+    builder: PacketBuilder = PacketBuilder("")
     builder.set_control(packets.CONTROL_RESPONSE)
     builder.set_command(packets.CREATE_FILE)
     packet = builder.generate_packet()
@@ -39,28 +39,20 @@ def create_file_packet(data: bytes) -> bytes:
     return packet
 
 
-def append_to_file_packet(data: bytes) -> bytes:
+def append_to_file_packet_response(data: bytes) -> bytes:
     # Generate an append to file packet
-    builder: PacketBuilder = PacketBuilder()
+    builder: PacketBuilder = PacketBuilder("APPEND_RESPONSE")
     builder.set_control(packets.CONTROL_RESPONSE)
-    builder.set_command(packets.APPEND_FILE)
+    builder.set_command(packets.CONN_ACK)
+    builder.set_packet_number(data[2] + 1)
     packet = builder.generate_packet()
 
-    # Try to append to file
-    try:
-        items = data[2:].decode('utf-8').split('\0')
-        file = open(path + items[0], 'a')
-        file.write(items[1])
-        file.close()
-        packet += "INFO: Text appended to file.".encode('utf-8')
-    except:
-        packet += "ERROR: Text cannot be writed!".encode('utf-8')
     return packet
 
 
 def remove_file_packet(data: bytes) -> bytes:
     # Generate a remove file packet
-    builder: PacketBuilder = PacketBuilder()
+    builder: PacketBuilder = PacketBuilder("")
     builder.set_control(packets.CONTROL_RESPONSE)
     builder.set_command(packets.REMOVE_FILE)
     packet = builder.generate_packet()
@@ -74,3 +66,18 @@ def remove_file_packet(data: bytes) -> bytes:
     except:
         packet += "WARNING: The file was already removed.".encode('utf-8')
     return packet
+
+
+def write_to_file(packets_items: dict):
+    packets_sorted = dict(sorted(packets_items.items()))
+
+    # Get filename
+    packet = packets_sorted[1]
+    content = packet[4:].decode('utf-8').split('\0')
+    file_name = content[0]
+
+    # Append text to file
+    with open(path + file_name, 'a') as f:
+        for _, packet in packets_sorted.items():
+            content = packet[4:].decode('utf-8').split('\0')
+            f.write(content[1])

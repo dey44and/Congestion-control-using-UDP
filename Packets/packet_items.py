@@ -7,6 +7,7 @@ CONTROL_RESPONSE = 2
 CONN_SYN = 0
 CONN_ACK = 1
 CONN_LEAVE = 2
+CONN_OVER = 3
 
 # Instruction parameters
 LIST_FILES = 0
