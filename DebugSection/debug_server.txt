@@ -292,3 +292,9 @@
 2023-01-20 05:56:21: Server send UDP datagram '2 - 0' to: ('127.0.10.10', 50001).
 2023-01-20 05:56:21: Server send UDP datagram '2 - 0' to: ('127.0.10.10', 50001).
 2023-01-20 05:56:21: Server send UDP datagram '2 - 0' to: ('127.0.10.10', 50001).
+2023-01-20 05:57:52: Receive UDP datagram from: ('127.0.10.10', 50001).
+2023-01-20 05:57:52: Client ('127.0.10.10', 0) disconnected from server.
+2023-01-20 05:57:56: Receive UDP datagram from: ('127.0.10.10', 50001).
+2023-01-20 05:57:56: Client ('127.0.10.10', 0) disconnected from server.
+2023-01-20 05:57:58: Receive UDP datagram from: ('127.0.10.10', 50001).
+2023-01-20 05:57:58: Client ('127.0.10.10', 0) disconnected from server.

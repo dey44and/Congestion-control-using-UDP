@@ -110,7 +110,8 @@ Amintim că mecanismul de control al congestiei folosind Algoritmul Tahoe se va 
 Aplicația utilizează mai multe șabloane de proiectare:
 - Constructor (Builder) - pentru crearea pachetelor;
 - Fabrică de obiecte (Factory) - pentru formatarea pachetelor în funcție de operația realizată;
-- Comandă (Commander) - pentru realizarea operațiilor de răspuns ale server-ului după primirea unui pachet.
+- Comandă (Commander) - pentru realizarea operațiilor de răspuns ale server-ului după primirea unui pachet;
+- Automat cu stări finite (Finit State Machine) - pentru gestionarea congestiei, folosit de Client și Server.
 
 Diagrama UML de clase este următoarea:
 
