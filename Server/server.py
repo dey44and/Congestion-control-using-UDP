@@ -177,6 +177,11 @@ class Server(Entity):
                         file.write(f"{date_time}: Server send UDP datagram '{pcktt[0]} - {pcktt[1]}' to: "
                                    f"{client_adress}.\n")
                         file.close()
+                # Append history to debug
+                with open("../DebugSection/debug_server.txt", 'a') as file:
+                    date_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+                    file.write(f"{date_time}: Receive UDP datagram from: {client_adress}.\n")
+                    file.close()
 
     # Handler for one packet send
     def __send_one_packet_handler(self):

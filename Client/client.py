@@ -142,6 +142,12 @@ class Client(Entity):
                         next_packet = -1
                         break
 
+                # Append history to debug
+                with open("../DebugSection/debug_client.txt", 'a') as f:
+                    date = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+                    f.write(f"{date}: Receive UDP datagram from: {server_adress}.\n")
+                    f.close()
+
             # Check if next_packet != get_recv_packets() + 1
             if next_packet != self.__controller.get_send_packets() + 1 or received_packets != \
                     self.__current_session_send_packets:

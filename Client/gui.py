@@ -290,7 +290,6 @@ class Ui_MainWindow(object):
             for packet in pckts:
                 self.client.add_packet(packet)
 
-
     def display_instructions(self):
         self.textEdit.clear()
         self.textEdit.append(info)
