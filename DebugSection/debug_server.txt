@@ -3208,3 +3208,509 @@
 2023-01-23 02:37:41: Server send UDP datagram '2 - 0' to: ('127.0.10.10', 50001).
 2023-01-23 02:37:41: Receive UDP datagram from: ('127.0.10.10', 50001).
 2023-01-23 02:37:41: Receive UDP datagram from: ('127.0.10.10', 50001).
+
+2023-06-09 14:20:15: Server is starting connection on (127.0.0.1, 54321)
+
+2023-06-09 14:54:16: Server is starting connection on (127.0.0.1, 54321)
+
+2023-06-09 14:56:31: Server is starting connection on (127.0.0.1, 54321)
+
+2023-06-09 14:58:09: Server is starting connection on (127.0.0.1, 54321)
+
+2023-06-09 16:05:46: Server is starting connection on (127.0.0.1, 54321)
+
+2023-06-09 16:06:20: Server is starting connection on (127.0.0.1, 54321)
+2023-06-09 16:11:07: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:11:07: Server send UDP datagram '1 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:11:08: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:11:08: Server send UDP datagram '1 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:11:20: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:11:20: Server send UDP datagram '1 - 1' to: ('127.0.0.1', 12345).
+2023-06-09 16:11:42: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:11:42: Server send UDP datagram '1 - 2' to: ('127.0.0.1', 12345).
+
+2023-06-09 16:13:57: Server is starting connection on (127.0.0.1, 54321)
+2023-06-09 16:14:27: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:14:27: Server send UDP datagram '1 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:14:48: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:14:48: Server send UDP datagram '1 - 1' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:26: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:26: Server send UDP datagram '1 - 2' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:27: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:27: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:27: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:27: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:28: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:28: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:28: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:28: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:29: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:29: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:29: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:29: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:29: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:29: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:29: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:29: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:30: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:30: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:30: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:30: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:30: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:30: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:30: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:30: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:30: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:30: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:31: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:31: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:31: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:31: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:31: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:31: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:31: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:31: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:31: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:31: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:31: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:31: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:32: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:32: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:32: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:32: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:32: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:32: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:32: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:32: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:32: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:32: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:32: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:32: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:32: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:32: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:33: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:33: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:33: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:33: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:33: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:33: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:33: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:33: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:33: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:33: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:33: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:33: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:33: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:33: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:33: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:33: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:34: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:34: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:34: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:34: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:34: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:34: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:34: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:34: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:34: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:34: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:34: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:34: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:34: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:34: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:34: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:34: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:35: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:35: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:36: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:36: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:36: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:36: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:37: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:37: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:37: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:37: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:37: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:37: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:37: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:37: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:38: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:38: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:38: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:38: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:38: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:38: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:38: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:38: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:38: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:38: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:38: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:38: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:39: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:39: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:39: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:39: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:39: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:39: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:39: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:39: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:39: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:39: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:39: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:39: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:39: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:39: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:40: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:40: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:40: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:40: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:40: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:40: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:40: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:40: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:40: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:40: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:40: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:40: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:40: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:40: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:40: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:40: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:41: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:41: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:41: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:41: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:41: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:41: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:41: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:41: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:41: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:41: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:41: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:41: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:41: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:41: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:41: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:41: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:42: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:42: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:44: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:44: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:44: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:44: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:45: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:45: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:45: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:45: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:45: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:45: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:45: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:45: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:46: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:46: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:46: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:46: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:46: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:46: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:46: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:46: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:47: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:47: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:48: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:48: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:48: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:48: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:49: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:49: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:49: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:49: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:49: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:49: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:50: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:50: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:50: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:50: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:50: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:50: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:50: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:50: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:51: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:51: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:51: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:51: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:51: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:51: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:51: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:51: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:51: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:51: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:52: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:52: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:52: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:52: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:52: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:52: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:52: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:52: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:52: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:52: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:53: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:53: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:54: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:54: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:55: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:55: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:56: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:56: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:56: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:56: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:57: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:57: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:57: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:57: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:57: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:57: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:58: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:58: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:58: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:58: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:58: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:58: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:58: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:58: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:59: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:59: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:59: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:59: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:59: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:59: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:59: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:59: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:15:59: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:15:59: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:16:00: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:16:00: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:16:00: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:16:00: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:16:00: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:16:00: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:16:00: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:16:00: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:16:00: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:16:00: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:16:00: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:16:00: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:16:01: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:16:01: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:16:01: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:16:01: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:16:01: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:16:01: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:16:01: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:16:01: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:16:01: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:16:01: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:16:01: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:16:01: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:16:01: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:16:01: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:16:03: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:16:03: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:16:03: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:16:03: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:16:03: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:16:03: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:16:03: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:16:03: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:16:03: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:16:03: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:16:03: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:16:03: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:16:03: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:16:03: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:16:03: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:16:03: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:16:04: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:16:04: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:16:04: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:16:04: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:16:04: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:16:04: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:16:04: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:16:04: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:16:04: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:16:04: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:16:04: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:16:04: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:16:04: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:16:04: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:16:04: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:16:04: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:16:04: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:16:04: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:16:05: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:16:05: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:16:05: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:16:05: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:16:05: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:16:05: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:16:05: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:16:05: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:16:05: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:16:05: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:16:05: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:16:05: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:16:05: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:16:05: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:16:05: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:16:05: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:16:05: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:16:05: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:16:06: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:16:06: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:16:06: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:16:06: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:16:06: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:16:06: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:16:06: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:16:06: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:16:06: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:16:06: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:16:06: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:16:06: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:16:06: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:16:06: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:16:06: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:16:06: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:16:06: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:16:06: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:16:07: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:16:07: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:16:08: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:16:08: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:16:08: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:16:08: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:16:09: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:16:09: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:16:09: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:16:09: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:16:09: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:16:09: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:16:10: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:16:10: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:16:10: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:16:10: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:16:10: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:16:10: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:16:10: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:16:10: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:16:11: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:16:11: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:16:11: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:16:11: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:16:11: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:16:11: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:16:11: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:16:11: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:16:11: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:16:11: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:16:12: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:16:12: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:16:12: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:16:12: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:16:12: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:16:12: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:16:12: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:16:12: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:16:12: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:16:12: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:16:12: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:16:12: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:16:13: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:16:13: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:16:13: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:16:13: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:16:13: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:16:13: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:16:13: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:16:13: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:16:13: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:16:13: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:16:13: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:16:13: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:16:14: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:16:14: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:16:14: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:16:14: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:16:14: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:16:14: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:16:14: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:16:14: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:16:14: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:16:14: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:16:14: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:16:14: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:16:15: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:16:15: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:16:16: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:16:16: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:16:16: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:16:16: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:16:17: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:16:17: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:16:17: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:16:17: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:16:17: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:16:17: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:16:18: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:16:18: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:16:18: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:16:18: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:16:18: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:16:18: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:16:18: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:16:18: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:16:19: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:16:19: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:16:19: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:16:19: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:16:19: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:16:19: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:16:19: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:16:19: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:16:19: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:16:19: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:16:21: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:16:21: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:16:21: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:16:21: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:16:21: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:16:21: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:16:21: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:16:21: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:16:21: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:16:21: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:16:21: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:16:21: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:16:22: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:16:22: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:16:22: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:16:22: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:16:22: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:16:22: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:16:22: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:16:22: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:16:22: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:16:22: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:16:22: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:16:22: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:16:23: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:16:23: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:16:24: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:16:24: Receive UDP datagram from: ('127.0.0.1', 12345).
+2023-06-09 16:16:24: Server send UDP datagram '2 - 0' to: ('127.0.0.1', 12345).
+2023-06-09 16:16:24: Receive UDP datagram from: ('127.0.0.1', 12345).
+
+2023-06-09 16:16:24: Server is closing connection.
+
+2023-06-09 16:16:24: Server is closing connection.
