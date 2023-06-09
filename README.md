@@ -1,130 +1,130 @@
-# Implementarea unui mecanism de control al congestiei. Aplicație demonstrativă (UDP)
+# The implementation of a congestion control mechanism. Demonstrative application (UDP)
 
-Congestia unei rețele este o stare care apare atunci când traficul este atât de încărcat încât încetinește timpul de răspuns al acesteia. Cu alte cuvinte, prin rețea circulă mai multe date decât ar trebui.
-Efectele acesteia sunt: întârzierile, pierderea pachetelor sau blocarea noilor conexiuni.
-Controlul congestiei este un mecanism prin care se evită apariția acesteia.
+The congestion of a network is a state that appears when the trafic is heavy that it slows down the response time of the network. With other words, in the network there is more data than it should be. The side effects are: late, packets loss or blocking of new connections. The congestion control is a mechanism to prevent these problems.
 
-## Protocolul UDP
+## UDP Protocol
 
-UDP (User Datagram Protocol) este un protocol ce trimite pachete independente de date, numite datagrame, de la un calculator către altul, fără a garanta în vreun fel ajungerea acestora la destinație. <br/><br/>
-Este un serviciu neorientat conexiune: nu se stabilește o conexiune între client și server. Așadar, server-ul nu așteaptă apeluri de conexiune, ci primește direct datagrame de la clienți. <br/><br/>
-Este întâlnit în sistemele client-server în care se transmit puține mesaje și în general prea rar pentru a menține o conexiune activă între cele două entități. <br/><br/>
-Nu se garantează ordinea primirii mesajelor și nici prevenirea pierderilor pachetelor. UDP-ul se utilizează mai ales în rețelele în care există o pierdere foarte mică de pachete și în cadrul aplicațiilor pentru care pierderea unui pachet nu este foarte gravă (ex. Aplicațiile de streaming video). <br/>
+UDP (User Datagram Protocol) is a protocol that sends independent packets of data, called datagrams, from one computer to another, without guaranteeing in any way that they reach their destination. <br/><br/>
+It is a non-connection oriented service: no connection is established between the client and the server. So the server does not wait for connection calls, but directly receives datagrams from clients. <br/><br/>
+It is found in client-server systems where few messages are passed and generally too infrequently to maintain an active connection between the two entities. <br/><br/>
+Order of message receipt and prevention of packet loss are not guaranteed. UDP is mostly used in networks where there is very little packet loss and in applications where packet loss is not very serious (e.g. video streaming applications). <br/>
 
-## Gestionarea congestiei
+## Congestion control
 
-Protocolul UDP este orientat pe trimiterea pachetelor și nu este orientat pe conexiune, așa cum se întâmplă în cazul protocolului TCP.<br/></br>
-În cadrul protocolului TCP, există o serie de algoritmi care tratează apariția congestiei. Printre aceștia, amintim: Tahoe, Reno, New Reno și Vegas.<br></br>
-Aplicația va implementa funcționalitatea algoritmului _Tahoe_ pentru transmisia pachetelor folosind UDP într-o arhitectură de tip **client-server**.
 
-## Algoritmul Tahoe
+The UDP protocol is packet-oriented and not connection-oriented, as is the case with the TCP protocol.<br/></br>
+Within the TCP protocol, there are a number of algorithms that deal with the occurrence of congestion. Among them, we mention: Tahoe, Reno, New Reno and Vegas.<br></br>
+The application will implement the functionality of the _Tahoe_ algorithm for transmitting packets using UDP in a **client-server** architecture.
 
-Algoritmul Tahoe a fost numit după un lac din Statele Unite ale Americii. Acest algoritm particular a fost dezvoltat în acea zonă, de unde a rezultat numele.<br/><br/>
-Stările algoritmului sunt: **Slow Start**, **AIMD** și **Fast Rentransmit**.<br/><br/>
-**Starea Slow Start**: Starea este activă până când dimensiunea ferestrei (_cwnd_) devine egală cu _sshtresh_.
-În această fază, dimensiunea ferestrei se dublează la fiecare segment de date trimis și recepționat (_RTT_).
-Atunci când cwnd atinge valoarea lui sshtresh, starea încetează și cedează locul stării **AIMD**.<br/>
+## Tahoe algorithm
 
-**Starea AIMD**: În această fază _cwnd_ crește după formula **CWND = MSS * MSS / CWND**, unde _MSS_ este dimensiunea maximă a unui segment.
-În același timp, _sshtresh_ va fi redus la jumătate din valoarea curentă a _cwnd_.<br/>
+The Tahoe algorithm was named after a lake in the United States of America. This particular algorithm was developed in that area, hence the name.<br/><br/>
+The algorithm states are: **Slow Start**, **AIMD** and **Fast Retransmit**.<br/><br/>
+**Slow Start state**: The state is active until the window size (_cwnd_) becomes equal to _sshtresh_.
+In this phase, the window size doubles at each data segment sent and received (_RTT_).
+When cwnd reaches the value of sshtresh, the state ceases and gives way to the **AIMD** state.<br/>
 
-**Starea Fast Retransmit**: În momentul în care se primesc trei pachete duplicate ca răspuns, algoritmul trece în această fază.
-Aici valoarea _cwnd_ este setată la 1, apoi se va relua transmisia pachetelor în starea **Slow Start**.
+**AIMD Status**: In this phase _cwnd_ increases according to the formula **CWND = MSS * MSS / CWND**, where _MSS_ is the maximum size of a segment.
+At the same time, _sshtresh_ will be reduced to half the current value of _cwnd_.<br/>
 
-## Configurarea server-ului
+**Fast Retransmit state**: When three duplicate packets are received as a response, the algorithm enters this phase.
+Here _cwnd_ value is set to 1, then packet transmission will resume in **Slow Start** state.
 
-Configurarea unui server se realizează prin specificarea adresei IP și a portului sursă. Acestea trebuie să fie cunoscute și de clientul ce dorește să se conecteze.
+## Server configuration
 
-## Stabilirea conexiunii către server
+Configuring a server is done by specifying the IP address and source port. They must also be known by the client who wants to connect.
 
-1. Conexiunea se realizează prin specificarea adresei IP, a portului sursă (client) și a portului destinație (server).
-2. După stabilirea parametrilor de comunicare, se va realiza conectarea la baza de date și validarea utilizatorului ce dorește să folosească interfața.
-3. Apoi, interfața devine activă iar utilizatorul poate trimite și recepționa pachete de la server.
+## Establishing the connection to the server
 
-## Formatul pachetelor ce vor fi trimise
+1. The connection is made by specifying the IP address, the source port (client) and the destination port (server).
+2. After establishing the communication parameters, the connection to the database and the validation of the user who wants to use the interface will be carried out.
+3. Then the interface becomes active and the user can send and receive packets from the server.
 
-Pentru început, orice pachet va fi format din 8 biți în care se va stoca tipul controlului dorit.
+## The format of the packets to be sent
 
-| Tip control | Cod |
-|-------------|-----|
-| CONNECTION  | 0   |
-| INSTRUCTION | 1   |
-| RESPONSE    | 2   |
+To begin with, any packet will consist of 8 bits in which the desired control type will be stored.
 
-Pe următorii 8 biți, se va salva tipul comenzii ce se dorește a fi executată, în cadrul pachetului tip INSTRUCTION sau care a fost executată, în cadrul pachetului de tip RESPONSE.
+| Control type | Code |
+|--------------|------|
+| CONNECTION   | 0    |
+| INSTRUCTION  | 1    |
+| RESPONSE     | 2    |
 
-| Nume comandă  | Cod |
-|---------------|-----|
-| LIST_FILES    | 0   |
-| CREATE_FILE   | 1   |
-| APPEND_FILE   | 2   |
-| REMOVE_FILE   | 3   |
+On the following 8 bits, the type of command that is to be executed, within the INSTRUCTION type package or that was executed, within the RESPONSE type package, will be saved.
 
-Dacă pachetul este de tip CONNECTION, octetul va conține următoarele tipuri de notificări:
+| Command name | Code |
+|--------------|------|
+| LIST_FILES   | 0    |
+| CREATE_FILE  | 1    |
+| APPEND_FILE  | 2    |
+| REMOVE_FILE  | 3    |
 
-| Nume notificare | Cod |
-|-----------------|-----|
-| ACK             | 0   |
-| LEAVE           | 1   |
-| OVER            | 2   |
+If the packet is of type CONNECTION, the byte will contain the following types of notifications:
 
-## Structura pachetelor prin care se va realiza comunicarea
+| Notification type | Code |
+|-------------------|------|
+| ACK               | 0    |
+| LEAVE             | 1    |
+| OVER              | 2    |
 
-Pentru pachetul ce va cere __afișarea fișierelor__, __finalizarea transmisiei__ sau __deconectarea de la server__, structura este:
+## The structure of the packets through which the communication will be carried out
 
-| COD_INSTRUCȚIUNE | COD_COMANDĂ |
-|------------------|-------------|
-| 8 BIȚI           | 8 BIȚI      |
+For the packet that will request __show files__, __complete transmission__ or __disconnect from server__, the structure is:
 
-Pentru pachetul ce va cere __adăugarea unui fișier__ sau __ștergerea unui fișier__, structura este:
+| INSTRUCTION_CODE | COMMAND_CODE |
+|------------------|--------------|
+| 8 BITS           | 8 BITS       |
 
-| COD_INSTRUCȚIUNE | COD_COMANDĂ | NUME_FIȘIER |
-|------------------|-------------|-------------|
-| 8 BIȚI           | 8 BIȚI      | x BIȚI      |
+For the package that will ask to __add a file__ or __delete a file__, the structure is:
 
-Pentru pachetul ce va realiza __adăugarea de conținut__, __descărcarea unui fișier__ sau __încărcarea unui fișier__, structura este:
+| INSTRUCTION_CODE | COMMAND_CODE | FILENAME |
+|------------------|--------------|----------|
+| 8 BITS           | 8 BITS       | x BITS   |
 
-| COD_INSTRUCȚIUNE  | COD_COMANDĂ | NUMĂR_PACHET_CURENT | NUMĂR_PACHETE |  NUME_FIȘIER | CONȚINUT_PACHET |
-|-------------------|-------------|---------------------|---------------|--------------|-----------------|
-| 8 BIȚI            | 8 BIȚI      | 8 BIȚI              | 8 BIȚI        |  x BIȚI      | 1 - 512 BIȚI    |
 
-Pentru pachetul ce va realiza __confirmarea datelor__, structura este:
+For the package that will perform __add content__, __download a file__ or __upload a file__, the structure is:
 
-| COD_INSTRUCȚIUNE | COD_COMANDĂ | NUMĂR_PACHET_URMĂTOR |
-|------------------|-------------|----------------------|
-| 8 BIȚI           | 8 BIȚI      | 8 BIȚI               |
+| INSTRUCTION_CODE | COMMAND_CODE | CURRENT_PACKET_NUMBER | PACKET_NUMBERS | FILENAME | PACKET_CONTENT |
+|------------------|--------------|-----------------------|----------------|----------|----------------|
+| 8 BIȚI           | 8 BIȚI       | 8 BIȚI                | 8 BIȚI         | x BIȚI   | 1 - 512 BIȚI   |
 
-## Operatii implementate
+For the package that will perform __data confirmation__, the structure is:
 
-Folosind structura pachetelor definită mai sus, aplicația va implementa următoarele operații:
-- crearea unui fișier
-- adăugarea de conținut la un fișier
-- ștergerea unui fișier
+| INSTRUCTION_CODE | COMMAND_CODE | NEXT_PACKET_NUMBER |
+|------------------|--------------|--------------------|
+| 8 BIȚI           | 8 BIȚI       | 8 BIȚI             |
 
-Amintim că mecanismul de control al congestiei folosind Algoritmul Tahoe se va realiza doar în cazul celei de a doua operații, în care conținutul ce se dorește a fi adăugat va fi împărțit în pachete ce vor fi transmise către server.
+## Operations implemented
 
-## Paradigme de programare folosite
+Using the package structure defined above, the application will implement the following operations:
+- creating a file
+- adding content to a file
+- deleting a file
 
-În implementarea aplicației, a fost folosită paradigma programării orientate pe obiecte, dar și elemente de programare funcțională.<br/>
+We remind you that the congestion control mechanism using the Tahoe Algorithm will be realized only in the case of the second operation, in which the content to be added will be divided into packets that will be sent to the server.
 
-Aplicația utilizează mai multe șabloane de proiectare:
-- Constructor (Builder) - pentru crearea pachetelor;
-- Fabrică de obiecte (Factory) - pentru formatarea pachetelor în funcție de operația realizată;
-- Comandă (Commander) - pentru realizarea operațiilor de răspuns ale server-ului după primirea unui pachet;
-- Automat cu stări finite (Finit State Machine) - pentru gestionarea congestiei, folosit de Client și Server.
+## Programming paradigms used
 
-Diagrama UML de clase este următoarea:
+In implementing the application, the paradigm of object-oriented programming was used, but also elements of functional programming.<br/>
 
-![Diagrama UML](UML_Diagram.png)
+The application uses several design templates:
+- Builder (Builder) - for creating packages;
+- Factory of objects (Factory) - for formatting packages according to the operation performed;
+- Command (Commander) - for performing server response operations after receiving a packet;
+- Finite State Machine - for congestion management, used by Client and Server.
 
-## Rezultate
+The UML class diagram is as follows:
 
-Mai jos, se află rezultatele obținute în urma transferului a 176 de datagrame, prin care s-a transportat conținutul unui fișier text,
-în cadrul căruia server-ul a avut o rată de primire a pachetelor de 95%.
+![UML Diagram](UML_Diagram.png)
 
-![Grafic evolutie cwnd](Statistics/grafic.png)
+## Results
 
-## Bibliografie
+Below are the results obtained from the transfer of 176 datagrams, which carried the contents of a text file,
+during which the server had a 95% packet delivery rate.
+
+![CWND Evolution Plot](Statistics/grafic.png)
+
+## Bibliography
 
 [1] TCP/IP Illustrated, Volume 2, W. Richard Stevens and Gary R. Wright, Addison-Wesley Professional<br/>
 
