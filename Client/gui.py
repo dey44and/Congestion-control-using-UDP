@@ -1,4 +1,6 @@
+import os
 import sys
+from pathlib import Path
 
 from PySide2.QtCore import (QCoreApplication, QMetaObject, QRect)
 from PySide2.QtGui import (QFont)
@@ -297,8 +299,8 @@ class Ui_MainWindow(object):
     def connect_to_db(self):
         username_text = self.input_username.text()
         password_text = self.input_password.text()
-        check_usr: CheckUser = CheckUser("C:\\Users\\Iosif\\Desktop\\Anul universitar 2022-2023\\Retele de calculatoare"
-                                         "\\RC - Proiect\\proiect-echipa-15\\SQLiteDatabaseBrowserPortable\\conn.db")
+        ROOT_DIR = Path(__file__).parent.parent.__str__()
+        check_usr: CheckUser = CheckUser(ROOT_DIR + "\\Database\\conn.db")
         # If connection exists, request frame will be enabled
         if check_usr.check(username_text, password_text):
             # Connect client to server

@@ -1,3 +1,5 @@
+from pathlib import Path
+
 import numpy
 import matplotlib.pyplot as plt
 
@@ -19,5 +21,5 @@ class Stats(object):
         plt.title("Evolution of congestion window size over every RTT")
         plt.xlabel("RTT")
         plt.ylabel("Congestion Window")
-        plt.savefig('C:\\Users\\Iosif\\Desktop\\Anul universitar 2022-2023\\Retele de calculatoare\\'
-                    'RC - Proiect\\proiect-echipa-15\\Statistics\\grafic.png')
+        ROOT_DIR = Path(__file__).parent.parent.__str__()
+        plt.savefig(ROOT_DIR + '\\Statistics\\grafic.png')
