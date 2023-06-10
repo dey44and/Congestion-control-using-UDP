@@ -86,13 +86,13 @@ For the package that will perform __add content__, __download a file__ or __uplo
 
 | INSTRUCTION_CODE | COMMAND_CODE | CURRENT_PACKET_NUMBER | PACKET_NUMBERS | FILENAME | PACKET_CONTENT |
 |------------------|--------------|-----------------------|----------------|----------|----------------|
-| 8 BIȚI           | 8 BIȚI       | 8 BIȚI                | 8 BIȚI         | x BIȚI   | 1 - 512 BIȚI   |
+| 8 BITS           | 8 BITS       | 8 BITS                | 8 BITS         | x BITS   | 1 - 512 BITS   |
 
 For the package that will perform __data confirmation__, the structure is:
 
 | INSTRUCTION_CODE | COMMAND_CODE | NEXT_PACKET_NUMBER |
 |------------------|--------------|--------------------|
-| 8 BIȚI           | 8 BIȚI       | 8 BIȚI             |
+| 8 BITS           | 8 BITS       | 8 BITS             |
 
 ## Operations implemented
 
